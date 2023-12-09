@@ -1,0 +1,76 @@
+stages:
+  - test
+  - build
+  - deploy
+
+variables:
+  FF_DISABLE_UMASK_FOR_DOCKER_EXECUTOR: 1
+  GIT_STRATEGY: clone
+
+#test_stage:
+#  stage: test
+#  script:
+#    - echo "todo tests"
+
+#build:
+#  script:
+#    - echo "todo tests"
+#
+
+.deploy_env: &deploy_env
+  - echo $_ENV_FILENAME
+  - chmod og= $SSH_PRIVATE_KEY
+  - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_ADDRESS "mkdir -p $SERVER_WORKDIR"
+
+.template: &deploy_to
+  stage: deploy
+  image: git-registry.meest.com:443/meest-common/nodejs-base/nodejs-base-lts-debian:latest
+  script:
+    - *deploy_env
+    - ls -al
+    - npm install && npm run prod
+    - |-
+      rsync -atv --progress -e "ssh -i $SSH_PRIVATE_KEY" \
+        --perms --owner --group --chmod=D0770,F0440 \
+        --exclude='.git/' \
+        --exclude='node_modules/' \
+        --exclude='vagrant/' \
+        --exclude '.gitlab-ci.yml' \
+        ./ $SERVER_USER@$SERVER_ADDRESS:$SERVER_WORKDIR
+    - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_ADDRESS "cd $SERVER_WORKDIR && ${_PHP_VERSION} /usr/bin/composer install -n"
+    - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_ADDRESS "cd $SERVER_WORKDIR && ${_PHP_VERSION} artisan -n migrate"
+    - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_ADDRESS "cd $SERVER_WORKDIR && ${_PHP_VERSION} artisan db:seed"
+    - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_ADDRESS "cd $SERVER_WORKDIR && ${_PHP_VERSION} artisan cache:clear"
+  interruptible: true
+  tags:
+    - docker
+
+deploy_development:
+  <<: *deploy_to
+  environment:
+    name: development
+  only:
+    - development
+  variables:
+    _PHP_VERSION: php8.1
+
+deploy_staging:
+  <<: *deploy_to
+  environment:
+    name: staging
+  only:
+    - staging
+  when: manual
+  variables:
+    _PHP_VERSION: php8.1
+
+deploy_prod:
+  <<: *deploy_to
+  environment:
+    name: prod
+  only:
+    - master
+  when: manual
+  variables:
+    _PHP_VERSION: php8.1
+

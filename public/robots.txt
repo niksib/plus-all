@@ -1,0 +1,18 @@
+User-Agent: *
+
+Allow: /
+Allow: /app/css/app.css*
+Allow: /app/css/pages/home.css*
+Allow: /app/js/app.js*
+Allow: /app/js/pages/home.js*
+Allow:  /app/vendor/*.js
+Allow: /storage/images/*/*.png
+Allow: /storage/images/*/*.svg
+
+Disallow: *?select-country
+Disallow: */search
+Disallow: */portal
+Disallow: */control/login
+Disallow: /en/
+
+Sitemap: https://meestposhta.com.ua/sitemap.xml
