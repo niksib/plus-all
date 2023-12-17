@@ -35,6 +35,7 @@
         "intl-tel-input": "^18.1.8",
         "jquery": "^3.6.3",
         "jquery-validation": "^1.19.5",
+        "puppeteer": "^21.6.1",
         "resize-observer-polyfill": "^1.5.1",
         "sass-loader": "^13.0.2",
         "select2": "^4.1.0-rc.0",

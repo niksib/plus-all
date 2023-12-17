@@ -18,10 +18,10 @@ class FileService
         $fileName = Str::random(). '.' . $fileExtension;
         $newPath = $file->storeAs('public/' . $path, $fileName);
 
-        if (in_array($fileExtension, self::TO_WEBP_EXTENSIONS)) {
-            $fileName = str_replace($fileExtension, 'webp', $fileName);
-            Webp::make($file)->save(storage_path('app/public/' . $path . '/' . $fileName), 100);
-        }
+//        if (in_array($fileExtension, self::TO_WEBP_EXTENSIONS)) {
+//            $fileName = str_replace($fileExtension, 'webp', $fileName);
+//            Webp::make($file)->save(storage_path('app/public/' . $path . '/' . $fileName), 100);
+//        }
 
         return str_replace('public/', '', $newPath);
     }
