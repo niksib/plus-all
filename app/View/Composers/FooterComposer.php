@@ -13,6 +13,8 @@ class FooterComposer
      * Create a new profile composer.
      */
     public function __construct(
+        public MenuFrontRepository $menuFrontRepository,
+        public LinkFrontRepository $linkFrontRepository
     ) {}
 
     /**
@@ -20,6 +22,10 @@ class FooterComposer
      */
     public function compose(View $view): void
     {
+        $footerMenu = $this->menuFrontRepository->getActiveMenuItemsByGroup('footer');
+        $socialFooter = $this->linkFrontRepository->getActiveLinksByGroup('social-footer');
 
+        $view->with('footerMenu', $footerMenu);
+        $view->with('socialFooter', $socialFooter);
     }
 }

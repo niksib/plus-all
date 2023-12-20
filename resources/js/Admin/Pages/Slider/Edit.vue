@@ -38,13 +38,8 @@ const addNewSlide = () => {
     Object.keys(proxyItemLangs.value).map((language) => {
         proxyItemLangs.value[language].content.push({
             id: proxyItemLangs.value[language].content.length + 1,
-            link: '',
             title: '',
-            subtitle: '',
-            btn_text_1: '',
-            btn_text_2: '',
-            btn_link_1: '',
-            btn_link_2: ''
+            subtitle: ''
         })
     });
 }
@@ -139,13 +134,6 @@ const deleteSliderItem = (index) => {
                                     </div>
                                     <div class="w-3/4">
                                         <CustomInput class="mb-3"
-                                                     :name="'content-link-' + index + '-' + language.code"
-                                                     :errors="errors"
-                                                     label="Slider link"
-                                                     v-model="element.link"
-                                        />
-
-                                        <CustomInput class="mb-3"
                                                      :name="'content-title-' + index + '-' + language.code"
                                                      :errors="errors"
                                                      label="Slider title"
@@ -157,35 +145,6 @@ const deleteSliderItem = (index) => {
                                                      :errors="errors"
                                                      label="Slider subtitle"
                                                      v-model="element.subtitle"
-                                        />
-
-
-                                        <CustomInput class="mb-3"
-                                                     :name="'content-subtitle-' + index + '-' + language.code"
-                                                     :errors="errors"
-                                                     label="Slider button 1"
-                                                     v-model="element.btn_text_1"
-                                        />
-
-                                        <CustomInput class="mb-3"
-                                                     :name="'content-subtitle-' + index + '-' + language.code"
-                                                     :errors="errors"
-                                                     label="Slider button 1 link"
-                                                     v-model="element.btn_link_1"
-                                        />
-
-                                        <CustomInput class="mb-3"
-                                                     :name="'content-subtitle-' + index + '-' + language.code"
-                                                     :errors="errors"
-                                                     label="Slider button 2"
-                                                     v-model="element.btn_text_2"
-                                        />
-
-                                        <CustomInput class="mb-3"
-                                                     :name="'content-subtitle-' + index + '-' + language.code"
-                                                     :errors="errors"
-                                                     label="Slider button 2 link"
-                                                     v-model="element.btn_link_2"
                                         />
                                     </div>
                                 </div>

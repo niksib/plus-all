@@ -9,5 +9,4 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/image-generation/generate', [ImageGenerationController::class, 'generate'])->name('image-generation.generate');
     Route::get('/image-generation/banner/{id}', [ImageGenerationController::class, 'banner'])->name('image-generation.banner');
-
 });

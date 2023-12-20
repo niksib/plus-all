@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Services\Post\Models\Category;
-use App\Services\Post\Models\CategoryLang;
 use App\Services\Setting\Models\Setting;
 use Illuminate\Database\Seeder;
 
@@ -17,7 +15,7 @@ class SettingsSeeder extends Seeder
     public function run()
     {
         $settings = [
-            'example-key' => 'some value',
+            'home.video' => 'https://www.youtube.com/embed/tgbNymZ7vqY',
         ];
 
         foreach ($settings as $key => $value) {

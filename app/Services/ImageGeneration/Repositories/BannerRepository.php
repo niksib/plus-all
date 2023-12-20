@@ -2,22 +2,15 @@
 
 namespace App\Services\ImageGeneration\Repositories;
 
+use App\Services\Basic\Repositories\CRUDRepository;
 use App\Services\ImageGeneration\Models\Banner;
 
-class BannerRepository
+class BannerRepository extends CRUDRepository
 {
-    public function create(array $data): Banner
+    public function __construct()
     {
-        $banner = new Banner();
-        $banner->fill($data);
+        parent::__construct();
 
-        $banner->save();
-
-        return $banner;
-    }
-
-    public function getById(int $id): ?Banner
-    {
-        return Banner::where('id', $id)->first();
+        $this->model = new Banner();
     }
 }

@@ -10,21 +10,31 @@ const menuItems = ref([
     {
         route: 'admin.dashboard',
         group: 'admin.dashboard',
-        title: 'Dashboard',
+        title: 'Головна',
     },
     {
         route: 'admin.translations.index',
         group: 'admin.translations',
-        title: 'Translations',
+        title: 'Переклади',
     },
     {
         route: 'admin.settings.index',
         group: 'admin.settings',
-        title: 'Settings',
+        title: 'Додаткові змінні',
     },
     {
         route: null,
-        title: 'Content'
+        title: 'Контент'
+    },
+    {
+        route: 'admin.banners.index',
+        group: 'admin.banners.index',
+        title: 'Банери',
+    },
+    {
+        route: 'admin.sliders.index',
+        group: 'admin.sliders.index',
+        title: 'Слайдери',
     },
     {
         route: 'admin.file-manager',
@@ -32,40 +42,33 @@ const menuItems = ref([
         title: 'Файловий менеджер',
     },
     {
-        route: null,
-        group: 'other',
-        title: 'Інше',
-        sublist: [
-            {
-                route: 'admin.seo-rule.index',
-                group: 'admin.seo-rule',
-                title: 'SEO rules',
-            },
-            {
-                route: 'admin.links.index',
-                group: 'admin.links',
-                title: 'Links',
-            },
-            {
-                route: 'admin.menu.index',
-                group: 'admin.menu',
-                title: 'Menu',
-            },
-        ]
+        route: 'admin.seo-rule.index',
+        group: 'admin.seo-rule',
+        title: 'SEO правила',
+    },
+    {
+        route: 'admin.links.index',
+        group: 'admin.links',
+        title: 'Посилання',
+    },
+    {
+        route: 'admin.menu.index',
+        group: 'admin.menu',
+        title: 'Меню',
     },
     {
         route: null,
-        title: 'Managing'
+        title: 'Управління'
     },
     {
         route: 'admin.users.index',
         group: 'admin.users',
-        title: 'Users',
+        title: 'Користувачі',
     },
     {
         route: 'admin.roles.index',
         group: 'admin.roles',
-        title: 'Roles',
+        title: 'Ролі',
     },
 ]);
 

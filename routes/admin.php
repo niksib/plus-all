@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\FileManagerController;
 use App\Http\Controllers\Admin\SeoRuleLangController;
 use App\Http\Controllers\Admin\SettingController;
@@ -44,6 +45,7 @@ Route::middleware(['auth', 'verified', 'permissions'])
         Route::resource('seo-rule', SeoRuleLangController::class)->except(['show']);
         Route::resource('settings', SettingController::class)->except(['show']);
         Route::get('/translations/google-sync', [TranslationController::class, 'googleSheetSync'])->name('translations.sync');
+        Route::resource('banners', BannerController::class)->except(['show', 'edit', 'store', 'create', 'update']);
 
         Route::get('/file-manager', [FileManagerController::class, 'index'])->name('file-manager');
     });

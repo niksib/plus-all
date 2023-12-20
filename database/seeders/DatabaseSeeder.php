@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TranslationSeeder::class);
         $this->call(ViewBlockSeeder::class);
         $this->call(SlidersSeeder::class);
+        $this->call(MenuSeeder::class);
+        $this->call(LinksSeeder::class);
     }
 }

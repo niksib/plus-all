@@ -12,12 +12,17 @@ class HeaderComposer
      * Create a new profile composer.
      */
     public function __construct(
-    ) {}
+        public MenuFrontRepository $menuFrontRepository
+    ) {
+    }
 
     /**
      * Bind data to the view.
      */
     public function compose(View $view): void
     {
+        $headerMenu = $this->menuFrontRepository->getActiveMenuItemsByGroup('header');
+
+        $view->with('headerMenu', $headerMenu);
     }
 }

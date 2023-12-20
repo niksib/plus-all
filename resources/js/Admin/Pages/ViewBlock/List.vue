@@ -18,7 +18,7 @@ const { showConfirmModal } = useConfirmModal();
             View blocks
             <Link :href="route('admin.view-block.create')"
                   class="text-white bg-slate-500 hover:bg-slate-600 focus:outline-none focus:ring-4 focus:ring-slate-300 font-medium rounded-full text-sm px-3 py-1 ml-3 text-center">
-                Create new view block
+                Створити
             </Link>
         </h1>
 
@@ -30,13 +30,13 @@ const { showConfirmModal } = useConfirmModal();
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Title
+                            Назва
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Key
+                            Ключ
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            <span class="sr-only">Edit</span>
+                            <span class="sr-only">Дії</span>
                         </th>
                     </tr>
                     </thead>
@@ -55,14 +55,14 @@ const { showConfirmModal } = useConfirmModal();
                             <Link :href="route('admin.view-block.edit', {view_block: item.id})"
                                   class="py-2 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
                             >
-                                Edit
+                                Редагувати
                             </Link>
                             <Link :href="route('admin.view-block.destroy', {view_block: item.id})"
                                   method="delete"
                                   as="button"
                                   class="py-2 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-red-50 rounded-lg border border-gray-200 hover:bg-red-100 focus:z-10 focus:ring-4 focus:ring-gray-200"
                             >
-                                Delete
+                                Видалити
                             </Link>
                         </td>
                     </tr>

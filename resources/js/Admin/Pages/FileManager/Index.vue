@@ -11,11 +11,11 @@ const { showConfirmModal } = useConfirmModal();
 </script>
 
 <template>
-    <Head title="File manager" />
+    <Head title="Файловий менеджер" />
 
     <BreezeAuthenticatedLayout>
         <h1 class="font-bold text-2xl text-gray-700 flex items-center">
-            File manager
+            Файловий менеджер
         </h1>
 
         <div>

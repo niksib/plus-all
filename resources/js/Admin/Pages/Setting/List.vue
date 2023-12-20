@@ -14,26 +14,26 @@ const proxyFilters = ref(props.filters);
 </script>
 
 <template>
-    <Head title="Settings list" />
+    <Head title="Додаткові налаштування" />
 
     <BreezeAuthenticatedLayout>
         <h1 class="font-bold text-2xl text-gray-700 flex items-center">
-            Settings list
+            Додаткові налаштування
             <Link :href="route('admin.settings.create')"
                   class="text-white bg-slate-500 hover:bg-slate-600 focus:outline-none focus:ring-4 focus:ring-slate-300 font-medium rounded-full text-sm px-3 py-1 ml-3 text-center">
-                Create new Setting
+                Створити
             </Link>
         </h1>
 
         <div class="flex flex-col bg-white rounded mt-4">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4">
-                <p class="font-bold text-2xl mb-2 text-gray-700">Filters</p>
+                <p class="font-bold text-2xl mb-2 text-gray-700">Філтри</p>
                 <form class="flex flex-col w-full" :action="route('admin.settings.index', {filters: filters.value})">
                     <div class="flex">
                         <CustomInput class="mr-3 w-1/4"
                                      name="key"
                                      type="text"
-                                     label="Key"
+                                     label="Ключ"
                                      v-model="proxyFilters.key"
                         />
                     </div>
@@ -52,16 +52,16 @@ const proxyFilters = ref(props.filters);
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Key
+                            Ключ
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Value
+                            Значення
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Type
+                            Тип
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            <span class="sr-only">Edit</span>
+                            <span class="sr-only">Дії</span>
                         </th>
                     </tr>
                     </thead>
@@ -83,14 +83,14 @@ const proxyFilters = ref(props.filters);
                             <Link :href="route('admin.settings.edit', {setting: item.id})"
                                   class="py-2 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
                             >
-                                Edit
+                                Редагувати
                             </Link>
                             <Link :href="route('admin.settings.destroy', {setting: item.id})"
                                   method="delete"
                                   as="button"
                                   class="py-2 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-red-50 rounded-lg border border-gray-200 hover:bg-red-100 focus:z-10 focus:ring-4 focus:ring-gray-200"
                             >
-                                Delete
+                                Створити
                             </Link>
                         </td>
                     </tr>
