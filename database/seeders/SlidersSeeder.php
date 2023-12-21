@@ -102,6 +102,160 @@ class SlidersSeeder extends Seeder
                     'public/images/slides/s5.png'
                 ],
             ],
+            'home-endless-line-1' => [
+                'name' => 'Слайдер лінія 1 на головній',
+                'lang' => [
+                    'uk' => [
+                        [
+                            'id' => '1',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '2',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '3',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '4',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '5',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '6',
+                            'title' => '',
+                            'subtitle' => '',
+                        ]
+                    ],
+                    'en' => [
+                        [
+                            'id' => '1',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '2',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '3',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '4',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '5',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '6',
+                            'title' => '',
+                            'subtitle' => '',
+                        ]
+                    ],
+                ],
+                'status' => 1,
+                'images' => [
+                    'public/images/scrollbaner1/img1.png',
+                    'public/images/scrollbaner1/img2.png',
+                    'public/images/scrollbaner1/img3.png',
+                    'public/images/scrollbaner1/img4.png',
+                    'public/images/scrollbaner1/img5.png',
+                ],
+            ],
+            'home-endless-line-2' => [
+                'name' => 'Слайдер лінія 2 на головній',
+                'lang' => [
+                    'uk' => [
+                        [
+                            'id' => '1',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '2',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '3',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '4',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '5',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '6',
+                            'title' => '',
+                            'subtitle' => '',
+                        ]
+                    ],
+                    'en' => [
+                        [
+                            'id' => '1',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '2',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '3',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '4',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '5',
+                            'title' => '',
+                            'subtitle' => '',
+                        ],
+                        [
+                            'id' => '6',
+                            'title' => '',
+                            'subtitle' => '',
+                        ]
+                    ],
+                ],
+                'status' => 1,
+                'images' => [
+                    'public/images/scrollbaner2/img1.png',
+                    'public/images/scrollbaner2/img2.png',
+                    'public/images/scrollbaner2/img3.png',
+                    'public/images/scrollbaner2/img4.png',
+                    'public/images/scrollbaner2/img5.png',
+                ],
+            ],
         ];
 
         foreach ($sliders as $uid => $sliderData) {

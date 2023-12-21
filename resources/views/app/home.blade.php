@@ -156,38 +156,20 @@
             <div class="our-design-body">
                 <div class="endless">
                     <div class="endless-container">
-                        <div class="endless-el">
-                            <img class="endless-el-img" src="/images/scrollbaner1/img1.png" alt="?" title="?"></div>
-                        <div class="endless-el"><img class="endless-el-img" src="/images/scrollbaner1/img2.png" alt="?"
-                                                     title="?"></div>
-                        <div class="endless-el"><img class="endless-el-img" src="/images/scrollbaner1/img3.png" alt="?"
-                                                     title="?"></div>
-                        <div class="endless-el"><img class="endless-el-img" src="/images/scrollbaner1/img4.png" alt="?"
-                                                     title="?"></div>
-                        <div class="endless-el"><img class="endless-el-img" src="/images/scrollbaner1/img5.png" alt="?"
-                                                     title="?"></div>
-                        <div class="endless-el"><img class="endless-el-img" src="/images/scrollbaner1/img2.png" alt="?"
-                                                     title="?"></div>
-                        <div class="endless-el"><img class="endless-el-img" src="/images/scrollbaner1/img1.png" alt="?"
-                                                     title="?"></div>
+                        @foreach($endlessSlider1->images as $image)
+                            <div class="endless-el">
+                                <img class="endless-el-img" src="/storage/{{ $image }}">
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="endless endless--left">
                     <div class="endless-container">
-                        <div class="endless-el"><img class="endless-el-img" src="/images/scrollbaner2/img1.png" alt="?"
-                                                     title="?"></div>
-                        <div class="endless-el"><img class="endless-el-img" src="/images/scrollbaner2/img2.png" alt="?"
-                                                     title="?"></div>
-                        <div class="endless-el"><img class="endless-el-img" src="/images/scrollbaner2/img3.png" alt="?"
-                                                     title="?"></div>
-                        <div class="endless-el"><img class="endless-el-img" src="/images/scrollbaner2/img4.png" alt="?"
-                                                     title="?"></div>
-                        <div class="endless-el"><img class="endless-el-img" src="/images/scrollbaner2/img5.png" alt="?"
-                                                     title="?"></div>
-                        <div class="endless-el"><img class="endless-el-img" src="/images/scrollbaner2/img2.png" alt="?"
-                                                     title="?"></div>
-                        <div class="endless-el"><img class="endless-el-img" src="/images/scrollbaner2/img1.png" alt="?"
-                                                     title="?"></div>
+                        @foreach($endlessSlider2->images as $image)
+                            <div class="endless-el">
+                                <img class="endless-el-img" src="/storage/{{ $image }}">
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

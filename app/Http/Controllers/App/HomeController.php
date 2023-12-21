@@ -18,6 +18,8 @@ class HomeController extends Controller
         LinkFrontRepository $linkFrontRepository
     ): Factory|View|Application {
         $storiesSlider = $sliderFrontRepository->getActiveSliderByUid('home-stories');
+        $endlessSlider1 = $sliderFrontRepository->getActiveSliderByUid('home-endless-line-1');
+        $endlessSlider2 = $sliderFrontRepository->getActiveSliderByUid('home-endless-line-2');
         $homeVideo = $settingFrontRepository->get('home.video');
         $partners = $linkFrontRepository->getActiveLinksByGroup('partners');
 
@@ -26,7 +28,9 @@ class HomeController extends Controller
         return view('app.home', [
             'storiesSlider' => $storiesSlider,
             'homeVideo' => $homeVideo,
-            'partners' => $partners
+            'partners' => $partners,
+            'endlessSlider1' => $endlessSlider1,
+            'endlessSlider2' => $endlessSlider2
         ]);
     }
 }
