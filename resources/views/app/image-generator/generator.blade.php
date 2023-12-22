@@ -227,20 +227,22 @@
                             </div>
                         </div>
                     </div>
-                    <section class="exemples-section">
-                        <div class="exemples-title-wrap">
-                            <h1 class="exemples-title">{{ trans('generator.examples-title') }}</h1>
-                        </div>
-                        <div class="exemples-body">
-                            <div class="exemples-content">
-                                @foreach($banners as $banner)
-                                    <div class="exemples-img-wrap">
-                                        <img class="exemples-img"src="/storage/{{ $banner->image }}">
-                                    </div>
-                                @endforeach
+                    @if($banners->isNotEmpty())
+                        <section class="exemples-section">
+                            <div class="exemples-title-wrap">
+                                <h1 class="exemples-title">{{ trans('generator.examples-title') }}</h1>
                             </div>
-                        </div>
-                    </section>
+                            <div class="exemples-body">
+                                <div class="exemples-content">
+                                    @foreach($banners as $banner)
+                                        <div class="exemples-img-wrap">
+                                            <img class="exemples-img" src="/storage/{{ $banner->image }}">
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </section>
+                    @endif
                 </div>
             </div>
         </div>
