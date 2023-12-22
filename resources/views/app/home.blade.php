@@ -17,11 +17,11 @@
         <div class="container">
             <div class="first-body">
                 <div class="first-content"><h1 class="first-title">{{ trans('first-section.title') }}</h1>
-                    <p class="first-text">{{ trans('first-section.subtitle') }}</p>
-                </div>
-                <img class="first-w-img" src="/images/sticker-plus-w.png" alt="#">
-                <img class="first-b-img" src="/images/sticker-plus-b.png" alt="#">
-                <img class="first-bg-img" src="/images/main.png" alt="#">
+                    <p class="first-text">{{ trans('first-section.subtitle') }}</p></div>
+                <picture class="first-bg-img-wrap">
+                    <source media="(max-width: 1199px)" srcset="/images/main-mob.png">
+                    <source media="(min-width: 1200px)" srcset="/images/main.png">
+                    <img class="first-bg-img" src="/images/main.png" alt="#"></picture>
             </div>
             <div class="first-circle-wrap">
                 <div class="first-circle">

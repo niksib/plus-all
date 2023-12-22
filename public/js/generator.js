@@ -19,7 +19,7 @@ const removePreviewImg = (e) =>{
     const formImg = document.querySelector('.workshop-form [name="image"]');
     const formMultiplier = document.querySelector('.workshop-form [name="multiplier"]');
     const textInfo = document.querySelector('.workshop-form-text--check');
-    
+
 
     const getText = formImg.dataset.text;
 
@@ -28,7 +28,7 @@ const removePreviewImg = (e) =>{
         formImg.classList.remove('active');
         textInfo.classList.remove('active');
         formImg.nextElementSibling.querySelector('.input-img-text').textContent = getText;
-        
+
         formMultiplier.setAttribute('disabled','');
         wImg = '';
         hImg = '';
@@ -83,11 +83,11 @@ const validatorForm = (_key) => {
             valid = false;
             if(!_key){
                 document.querySelector(`.workshop-form [name="${_d[0]}"]`).classList.add('field-error');
-            }            
+            }
         }
 
 
-        
+
     }
 
     if(_key){
@@ -115,7 +115,7 @@ const phone_number_mask = (e) => {
     let myOutPut = ""
     let theLastPos = 4;
     myText = ''+myCaja.value?.length < 2 ? myMask+myCaja.value : myCaja.value;
-  
+
     //get numbers
     for (let i = 2; i < myText.length; i++) {
       if (!isNaN(myText.charAt(i)) && myText.charAt(i) != " ") {
@@ -124,7 +124,7 @@ const phone_number_mask = (e) => {
     }
     //write over mask
     for (let j = 0; j < myMask.length; j++) {
-      if (myMask.charAt(j) == "_") { //replace "_" by a number 
+      if (myMask.charAt(j) == "_") { //replace "_" by a number
         if (myNumbers.length == 0)
           myOutPut = myOutPut + myMask.charAt(j);
         else {
@@ -139,6 +139,14 @@ const phone_number_mask = (e) => {
     myCaja.setSelectionRange(theLastPos, theLastPos);
   }
 
+  async function fetchGeneratorJSON(bodyData) {
+    const response = await window.fetch('/image-generation/generate',
+    {method:'POST', headers: {
+         	'Content-Type': 'multipart/form-data',//application/json  multipart/form-data
+          },  body: bodyData});
+    const data = await response.json();
+    return data;
+  }
 
 const formFunction = () => {
 
@@ -150,7 +158,7 @@ const formFunction = () => {
     const generatorProductWrap = document.getElementById('generator-product');
     const generatorText = document.getElementById('generator-text');
 	const generatorTitle = document.querySelector('.generator-title');
-	
+
     const generatorBorder = document.querySelector('.generator-border-img svg');
 	const generatorLogo = document.querySelector('.generator-logo svg');
 
@@ -163,7 +171,7 @@ const formFunction = () => {
     const textInfo = document.querySelector('.workshop-form-text--check');
 
     const btnCloseImg = document.querySelector('.workshop-form .input-img-close-icon');
-	
+
     const formEmail = document.querySelector('.workshop-form [name="email"]');
     const formPhone = document.querySelector('.workshop-form [name="phone"]');
     const submitBtn = document.querySelector('.workshop-form-submit');
@@ -238,7 +246,7 @@ const formFunction = () => {
         if(e.target.classList.contains('field-error')){
             e.target.classList.remove('field-error');
         }
-       
+
         if (!val) {
             generatorText.innerText = '...'
         } else {
@@ -306,10 +314,10 @@ const formFunction = () => {
     formName.addEventListener('input', previewTextHandler);
     formName.addEventListener('blur', onBlurHandler);
 
-	
+
     formBgColor.addEventListener('input', chageColorBg);
 
-	
+
     formBoderColor.addEventListener('input', chageColorBorder);
 
 	formCheckDark.addEventListener('change', isDarkText);
@@ -321,35 +329,48 @@ const formFunction = () => {
 
     formPhone.addEventListener('blur', onBlurHandler);
     formPhone.addEventListener('input', phone_number_mask);
-    
 
-    submitBtn.addEventListener('click', (e) => {
+
+    submitBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         const res = validatorForm();
 
         if(!res){return null;}
 
-        const object = {};
+        const _target = e.target;
+        _target.disabled = true;
+        _target.classList.add('btn--load');
+
         const formData = new FormData(form, submitBtn);
-		//const multiplier = formMultiplier?.target?.value || 1;
 		const _img = document.getElementById('product-img');
 
         formData.append('width', _img.offsetWidth);
         formData.append('height', _img.offsetHeight);
-		//formData.append('multiplier', multiplier);
-
-        
-        formData.forEach(function(value, key){
-            object[key] = value;
-        });
-
-        const json = JSON.stringify(object);
 
 
-        // fetch('url', {method:'post', headers: {
-        // 	'Content-Type': 'multipart/form-data',                 
-        //  },  body: formData});
+        let formDataObject = Object.fromEntries(formData.entries());
+        let formDataJsonString = JSON.stringify(formDataObject);
 
+        // formData.forEach(function(value, key){
+        //     object[key] = value;
+        // });
+
+        // const json = JSON.stringify(object);
+
+        try{
+            const res = await fetchGeneratorJSON(formData);
+
+            if(!res?.url){
+                throw new Error('Empty image');
+            }
+            window.open(res.url);
+
+        }catch(e){
+            window.alert('Error')
+        }finally{
+            _target.disabled = false;
+            _target.classList.remove('btn--load');
+        }
 
     })
 

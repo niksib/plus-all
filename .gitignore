@@ -12,10 +12,10 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-/public/admin/css
-/public/admin/js
-/public/app/css
-public/app/js
+#/public/admin/css
+#/public/admin/js
+#/public/app/css
+#public/app/js
 /.DS_Store
 .DS_Store
 .editorconfig

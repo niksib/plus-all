@@ -368,9 +368,17 @@ class TranslationSeeder extends Seeder
                 ],
             ],
             '404' => [
-                'message' => [
+                'title' => [
                     'en' => 'Oop\'s  sorry we can\'t find that page!',
-                    'uk' => 'Oop\'s  sorry we can\'t find that page!'
+                    'uk' => '<span>От... Халепа...</span><span>Щось пішло не так</span>'
+                ],
+                'description' => [
+                    'en' => '',
+                    'uk' => 'Тут нічого нема. Поверніться на головну сторінку сайту та знайдіть те, що вам потрібно."'
+                ],
+                'to-home' => [
+                    'en' => '',
+                    'uk' => 'На головну'
                 ]
             ]
         ];
