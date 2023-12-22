@@ -30,7 +30,7 @@ class ImageGenerationController extends Controller
                 'name' => $request->get('name'),
                 'bg_color' => $request->get('bg-color'),
                 'border_color' => $request->get('border-color'),
-                'dark_theme' => $request->get('dark-theme'),
+                'dark_theme' => $request->get('dark-theme', '0'),
                 'image' => $request->file('image'),
                 'width' => $request->file('width'),
                 'height' => $request->file('height'),
