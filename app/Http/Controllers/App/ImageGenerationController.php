@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
+use App\Services\ImageGeneration\Repositories\BannerFrontRepository;
 use App\Services\ImageGeneration\Repositories\BannerRepository;
 use App\Services\ImageGeneration\Services\ImageGenerationService;
 use Exception;
@@ -15,10 +16,14 @@ use Illuminate\Http\UploadedFile;
 
 class ImageGenerationController extends Controller
 {
-    public function generator(): Factory|View|Application {
+    public function generator(BannerFrontRepository $bannerFrontRepository): Factory|View|Application {
         view()->share('bodyId', 'workshop');
 
-        return view('app.image-generator.generator', []);
+        $banners = $bannerFrontRepository->getLatestBanners();
+
+        return view('app.image-generator.generator', [
+            'banners' => $banners
+        ]);
     }
 
     public function generate(
