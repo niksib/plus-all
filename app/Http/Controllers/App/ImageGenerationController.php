@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ImageGenerationRequest;
 use App\Services\ImageGeneration\Repositories\BannerFrontRepository;
 use App\Services\ImageGeneration\Repositories\BannerRepository;
 use App\Services\ImageGeneration\Services\ImageGenerationService;
@@ -27,7 +28,7 @@ class ImageGenerationController extends Controller
     }
 
     public function generate(
-        Request $request
+        ImageGenerationRequest $request
     ): JsonResponse {
         try {
             $imageGenerationService = new ImageGenerationService();

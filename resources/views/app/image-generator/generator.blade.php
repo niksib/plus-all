@@ -88,6 +88,7 @@
                         <div class="generator-product" id="generator-product"></div>
                     </div>
                     <form class="workshop-form" id="form-workshop">
+                        @csrf
                         <div class="workshop-form-row workshop-form-row-1">
                             <div class="input-wrap">
                                 <label class="input-label field-label">{{ trans('generator.brand-name') }}</label>
