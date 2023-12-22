@@ -26,24 +26,16 @@
         "vue-loader": "^17.0.0"
     },
     "dependencies": {
-        "@googlemaps/markerclusterer": "^2.0.15",
         "@inertiajs/vue3": "^1.0.2",
         "@tinymce/tinymce-vue": "^5.1.0",
         "@vuepic/vue-datepicker": "^5.1.0",
-        "animate.css": "^4.1.1",
-        "inputmask": "^5.0.8",
-        "intl-tel-input": "^18.1.8",
         "jquery": "^3.6.3",
         "jquery-validation": "^1.19.5",
         "puppeteer": "^21.6.1",
         "resize-observer-polyfill": "^1.5.1",
         "sass-loader": "^13.0.2",
         "select2": "^4.1.0-rc.0",
-        "simplebar": "^6.2.5",
-        "slick-carousel": "^1.8.1",
         "sortablejs": "^1.15.0",
-        "sortablejs-vue3": "^1.2.9",
-        "swiper": "^9.2.4",
-        "wow.js": "^1.2.2"
+        "sortablejs-vue3": "^1.2.9"
     }
 }
