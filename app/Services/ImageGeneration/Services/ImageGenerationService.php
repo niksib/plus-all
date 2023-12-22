@@ -18,6 +18,7 @@ class ImageGenerationService
 
         $bannerPath = str_replace('/stickers', '', $data['image']);
         Browsershot::url(route('image-generation.banner', ['id' => $banner->id]))
+            ->noSandbox()
             ->newHeadless()
             ->windowSize(1920, 1080)
             ->save($bannerPath);
