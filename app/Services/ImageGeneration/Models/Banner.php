@@ -12,4 +12,9 @@ class Banner extends Model
         'name', 'multiplier', 'bg_color', 'border_color', 'dark_theme', 'image',
         'width', 'height', 'phone', 'email'
     ];
+
+    public function getBannerPath(): string
+    {
+        return str_replace('/stickers', '', $this->image);
+    }
 }
