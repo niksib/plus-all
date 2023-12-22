@@ -36,7 +36,7 @@
 
                         @if(request()->route() && request()->route()->getName() === 'home')
                             <div class="main-menu-btns">
-                                <a href="#" class="btn   btn--blue header-btn">
+                                <a href="{{ trans('links.stickers-download') }}" class="btn   btn--blue header-btn">
                                     <span class="btn-text">{{ trans('header.download-stickers') }}</span>
                                     <svg class="btn-download" width="36" height="36" viewBox="0 0 36 36" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +46,7 @@
                                               stroke-width="2"></path>
                                     </svg>
                                 </a>
-                                <a href="#" class="btn   btn--blue header-btn">
+                                <a href="{{ route('image-generation.generator') }}" class="btn   btn--blue header-btn">
                                     <span class="btn-text">{{ trans('header.create-design') }}</span>
                                     <svg class="btn-arrow" width="45" height="36" viewBox="0 0 45 36" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">

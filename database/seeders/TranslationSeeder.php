@@ -380,6 +380,12 @@ class TranslationSeeder extends Seeder
                     'en' => '',
                     'uk' => 'На головну'
                 ]
+            ],
+            'links' => [
+                'stickers-download' => [
+                    'en' => '#',
+                    'uk' => '#'
+                ]
             ]
         ];
 

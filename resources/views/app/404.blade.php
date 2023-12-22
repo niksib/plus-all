@@ -28,7 +28,7 @@
             <div class="manufacturer-body">
                 <div class="action">
                     <h5 class="action-title">{{ trans('manufacturer.card-1-title') }}</h5>
-                    <a href="#" class="btn  btn--blue ">
+                    <a href="{{ trans('links.stickers-download') }}" class="btn  btn--blue ">
                         <span class="btn-text">{{ trans('manufacturer.card-1-btn') }}</span>
                         <svg class="btn-download" width="36" height="36" viewBox="0 0 36 36" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="action">
                     <h5 class="action-title">{{ trans('manufacturer.card-2-title') }}</h5>
-                    <a href="#" class="btn  btn--blue "><span class="btn-text">{{ trans('manufacturer.card-2-btn') }}</span>
+                    <a href="{{ route('image-generation.generator') }}" class="btn  btn--blue "><span class="btn-text">{{ trans('manufacturer.card-2-btn') }}</span>
                         <svg class="btn-arrow" width="45" height="36" viewBox="0 0 45 36" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path
