@@ -54,6 +54,7 @@
 
 <!-- Scripts -->
 {{ $js ?? '' }}
+<script src="/js/common.js"></script>
 
 {{ $jsBottom ?? '' }}
 </body>

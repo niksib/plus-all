@@ -3,7 +3,7 @@
 
     <x-slot:css>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-        <link rel="stylesheet" href="/css/baner-b.css"/>
+        <link rel="stylesheet" href="/css/baner-generator.css"/>
         <link rel="stylesheet" href="/css/index.css"/>
     </x-slot:css>
 
@@ -12,8 +12,6 @@
         <script src="/js/main.js"></script>
     </x-slot:js>
 
-
-    <x-slot:js-bottom></x-slot:js-bottom>
 
     <section class="first-section" id="home">
         <div class="container">

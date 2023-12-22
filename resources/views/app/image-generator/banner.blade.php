@@ -7,8 +7,8 @@
     <meta name='robots' content='noindex, nofollow' />
     <title>Generator</title>
 
-    <link rel="stylesheet" href="/css/banner-1.css"/>
-    <link rel="stylesheet" href="/css/banner-2.css"/>
+    <link rel="stylesheet" href="/css/baner.css"/>
+    <link rel="stylesheet" href="/css/baner-generator.css"/>
 </head>
 <body id="">
 <div>

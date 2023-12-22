@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot:css>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-        <link rel="stylesheet" href="/css/baner-b.css"/>
+        <link rel="stylesheet" href="/css/baner-generator.css"/>
         <link rel="stylesheet" href="/css/404.css"/>
     </x-slot:css>
 
@@ -16,7 +16,7 @@
                 <div class="col-lg-6 col-12">
                     <div class="error-inner">
                         <h1>404</h1>
-                        <span>Oop's  sorry we can't find that page!</span>
+                        <span>{{ trans('404.message') }}</span>
                     </div>
                 </div>
             </div>

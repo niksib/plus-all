@@ -34,7 +34,7 @@
                     <div class="main-menu-last">
                         <a class="menu-el-lang" href="{{ LaravelLocalization::getLocalizedUrl(LaravelLocalization::getCurrentLocale() === 'en' ? 'uk' : 'en') }}">{{ LaravelLocalization::getCurrentLocale() === 'uk' ? 'EN' : 'UK' }}</a>
 
-                        @if(!empty(request()->route()))
+                        @if(request()->route() && request()->route()->getName() === 'home')
                             <div class="main-menu-btns">
                                 <a href="#" class="btn   btn--blue header-btn">
                                     <span class="btn-text">{{ trans('header.download-stickers') }}</span>

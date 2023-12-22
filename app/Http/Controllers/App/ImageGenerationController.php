@@ -15,6 +15,12 @@ use Illuminate\Http\UploadedFile;
 
 class ImageGenerationController extends Controller
 {
+    public function generator(): Factory|View|Application {
+        view()->share('bodyId', 'workshop');
+
+        return view('app.image-generator.generator', []);
+    }
+
     public function generate(
         Request $request
     ): JsonResponse {

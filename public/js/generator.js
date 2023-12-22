@@ -1,15 +1,146 @@
+
+const shareFunction = ()=>{
+    const cotainer = document.querySelector('.workshop-share-right');
+    const closeBtn = document.getElementById('share-close');
+    const openShareBtn = document.getElementById('share-open');
+
+    closeBtn.addEventListener('click',(e)=>{
+        cotainer.classList.remove('active');
+    });
+
+    openShareBtn.addEventListener('click',()=>{
+        cotainer.classList.add('active');
+    });
+
+}
+
+const removePreviewImg = (e) =>{
+    const productImg = document.getElementById('product-img');
+    const formImg = document.querySelector('.workshop-form [name="image"]');
+    const formMultiplier = document.querySelector('.workshop-form [name="multiplier"]');
+    const textInfo = document.querySelector('.workshop-form-text--check');
+    
+
+    const getText = formImg.dataset.text;
+
+    if (productImg) {
+        productImg.remove();
+        formImg.classList.remove('active');
+        textInfo.classList.remove('active');
+        formImg.nextElementSibling.querySelector('.input-img-text').textContent = getText;
+        
+        formMultiplier.setAttribute('disabled','');
+        wImg = '';
+        hImg = '';
+    }
+}
+
+
+const rules = (key, val) => {
+    if (!val) {
+        return false;
+    }
+
+    if (key === 'image') {
+        if (val.size === 0) {
+            return false;
+        }
+        if(val.type !== 'image/png'){
+            return false;
+        }
+    }
+
+    if (key === 'email') {
+        if (!val.match(/^.+@.+\..+$/gim)) {
+            return false;
+        }
+    }
+
+    if (key === 'phone') {
+        let matches = val?.replace(/[^0-9]/g, "");
+
+        if (matches?.length !== 12) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+const validatorForm = (_key) => {
+    const form = document.getElementById('form-workshop');
+    const submitBtn = document.querySelector('.workshop-form-submit');
+    const formData = new FormData(form, submitBtn);
+
+    let valid = true;
+
+    for (const _d of formData) {
+       // console.log('_d', _d);
+        //console.log(`${_d[0]}: ${_d[1]} : ${_d[1].name}\n`);
+
+        if(!rules(_key? _key : _d[0],_d[1])){
+            valid = false;
+            if(!_key){
+                document.querySelector(`.workshop-form [name="${_d[0]}"]`).classList.add('field-error');
+            }            
+        }
+
+
+        
+    }
+
+    if(_key){
+        submitBtn.disabled = !valid;
+    }
+
+    return valid;
+}
+
+
+
+const phone_number_mask = (e) => {
+
+    const _target = e.target
+
+        if(_target.classList.contains('field-error')){
+            _target.classList.remove('field-error');
+        }
+
+
+    let myMask = "38 (___) ___ __ __";
+    let myCaja = _target;
+    let myText = "38";
+    let myNumbers = [];
+    let myOutPut = ""
+    let theLastPos = 4;
+    myText = ''+myCaja.value?.length < 2 ? myMask+myCaja.value : myCaja.value;
+  
+    //get numbers
+    for (let i = 2; i < myText.length; i++) {
+      if (!isNaN(myText.charAt(i)) && myText.charAt(i) != " ") {
+        myNumbers.push(myText.charAt(i));
+      }
+    }
+    //write over mask
+    for (let j = 0; j < myMask.length; j++) {
+      if (myMask.charAt(j) == "_") { //replace "_" by a number 
+        if (myNumbers.length == 0)
+          myOutPut = myOutPut + myMask.charAt(j);
+        else {
+          myOutPut = myOutPut + myNumbers.shift();
+          theLastPos = j + 1; //set caret position
+        }
+      } else {
+        myOutPut = myOutPut + myMask.charAt(j);
+      }
+    }
+    myCaja.value = myOutPut;
+    myCaja.setSelectionRange(theLastPos, theLastPos);
+  }
+
+
 const formFunction = () => {
-
-
-    // var title = document.querySelector('.workshop-title');
-    // var col = document.querySelector('[name="border-color"]');
-
-    // col.addEventListener('input',(e)=>{
-
-    // 	console.log('eeeee',e);
-    // title.style.color=e.target.value
-
-    // })
 
 	let wImg = '';
 	let hImg = '';
@@ -29,6 +160,9 @@ const formFunction = () => {
     const formBoderColor = document.querySelector('.workshop-form [name="border-color"]');
 	const formCheckDark = document.querySelector('.workshop-form [name="dark-theme"]');
 	const formMultiplier = document.querySelector('.workshop-form [name="multiplier"]');
+    const textInfo = document.querySelector('.workshop-form-text--check');
+
+    const btnCloseImg = document.querySelector('.workshop-form .input-img-close-icon');
 	
     const formEmail = document.querySelector('.workshop-form [name="email"]');
     const formPhone = document.querySelector('.workshop-form [name="phone"]');
@@ -48,6 +182,9 @@ const formFunction = () => {
             //img.width=176;
             //img.height=310;
             generatorProductWrap.appendChild(img);
+            formImg.classList.add('active');
+            textInfo.classList.add('active');
+            formImg.nextElementSibling.querySelector('.input-img-text').textContent = file.name;
 			// const productImg = document.getElementById('product-img');
 
 			// if (productImg) {
@@ -60,16 +197,11 @@ const formFunction = () => {
         if (file) {
             reader.readAsDataURL(file);
         } else {
-            const productImg = document.getElementById('product-img');
-            if (productImg) {
-                productImg.remove();
-				
-				formMultiplier.setAttribute('disabled','');
-				wImg = '';
-				hImg = '';
-            }
+            removePreviewImg();
 
         }
+
+        validatorForm('_');
 
         // reader.onloadend = function () {
         //   preview.src = reader.result;
@@ -82,9 +214,31 @@ const formFunction = () => {
         // }
     }
 
-    const previewText = (e) => {
+    const removePreviewImgHandler = (e) =>{
+        e.preventDefault();
+        removePreviewImg();
+    }
+
+    const onBlurHandler = (e) => {
+        validatorForm('_');
+    }
+
+    const textHandler = (e) => {
+
+        const _target = e.target
+
+        if(_target.classList.contains('field-error')){
+            _target.classList.remove('field-error');
+        }
+    }
+
+    const previewTextHandler = (e) => {
 
         const val = e.target.value
+        if(e.target.classList.contains('field-error')){
+            e.target.classList.remove('field-error');
+        }
+       
         if (!val) {
             generatorText.innerText = '...'
         } else {
@@ -117,8 +271,6 @@ const formFunction = () => {
 			const newHeight = hImg * val;
 			const maxWidth = generatorProductWrap.offsetWidth;
 			const maxHeight = generatorProductWrap.offsetHeight;
-			console.log('maxWidth',maxWidth,newWidth);
-            console.log('maxHeight',maxHeight,newHeight);
 
 			if (val) {
 				if(!(newHeight > maxHeight)){
@@ -141,33 +293,18 @@ const formFunction = () => {
 		}
     }
 
-    const rules = (key, val) => {
-        if (!val) {
-            return false;
-        }
-
-        if (key === 'image') {
-            if (val.size === 0) {
-                return false;
-            }
-        }
-
-        if (key === 'email') {
-            if (!val.match(/^.+@.+\..+$/gim)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 
     const validation = () => {
 
     }
 
+    formImg.addEventListener('blur', onBlurHandler);
     formImg.addEventListener('change', previewFile);
 
-    formName.addEventListener('input', previewText);
+    btnCloseImg.addEventListener('click', removePreviewImgHandler)
+
+    formName.addEventListener('input', previewTextHandler);
+    formName.addEventListener('blur', onBlurHandler);
 
 	
     formBgColor.addEventListener('input', chageColorBg);
@@ -179,8 +316,19 @@ const formFunction = () => {
 
 	formMultiplier.addEventListener('input', hadlerMultiplier);
 
+    formEmail.addEventListener('blur', onBlurHandler);
+    formEmail.addEventListener('input', textHandler);
+
+    formPhone.addEventListener('blur', onBlurHandler);
+    formPhone.addEventListener('input', phone_number_mask);
+    
+
     submitBtn.addEventListener('click', (e) => {
         e.preventDefault();
+        const res = validatorForm();
+
+        if(!res){return null;}
+
         const object = {};
         const formData = new FormData(form, submitBtn);
 		//const multiplier = formMultiplier?.target?.value || 1;
@@ -194,13 +342,8 @@ const formFunction = () => {
         formData.forEach(function(value, key){
             object[key] = value;
         });
-        const json = JSON.stringify(object);
 
-        console.log('json===>',json);
-        for (const _d of formData) {
-            console.log('_d', _d);
-            console.log(`${_d[0]}: ${_d[1]} : ${_d[1].name}\n`);
-        }
+        const json = JSON.stringify(object);
 
 
         // fetch('url', {method:'post', headers: {
@@ -210,7 +353,9 @@ const formFunction = () => {
 
     })
 
+
 }
 
 
-formFunction()
+formFunction();
+shareFunction();

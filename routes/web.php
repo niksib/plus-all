@@ -7,6 +7,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localizationRedirect', 'cache.headers:public;max_age=86400;etag']], function() {
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/image-generator', [ImageGenerationController::class, 'generator'])->name('image-generation.generator');
     Route::get('/image-generation/generate', [ImageGenerationController::class, 'generate'])->name('image-generation.generate');
     Route::get('/image-generation/banner/{id}', [ImageGenerationController::class, 'banner'])->name('image-generation.banner');
 });
