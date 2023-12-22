@@ -10,6 +10,6 @@ class BannerFrontRepository
 {
     public function getLatestBanners(int $limit = 10): Collection
     {
-        return Banner::query()->limit($limit)->get();
+        return Banner::query()->orderBy('id', 'desc')->limit($limit)->get();
     }
 }
