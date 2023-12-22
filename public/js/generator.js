@@ -141,9 +141,11 @@ const phone_number_mask = (e) => {
 
   async function fetchGeneratorJSON(bodyData) {
     const response = await window.fetch('/image-generation/generate',
-    {method:'POST', headers: {
-         	'Content-Type': 'multipart/form-data',//application/json  multipart/form-data
-          },  body: bodyData});
+    {
+        method: 'POST',
+        body: bodyData,
+    }
+    );
     const data = await response.json();
     return data;
   }
@@ -348,8 +350,8 @@ const formFunction = () => {
         formData.append('height', _img.offsetHeight);
 
 
-        let formDataObject = Object.fromEntries(formData.entries());
-        let formDataJsonString = JSON.stringify(formDataObject);
+        //let formDataObject = Object.fromEntries(formData.entries());
+        //let formDataJsonString = JSON.stringify(formDataObject);
 
         // formData.forEach(function(value, key){
         //     object[key] = value;

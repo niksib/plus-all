@@ -27,15 +27,15 @@ class ImageGenerationController extends Controller
         try {
             $imageGenerationService = new ImageGenerationService();
             $data = [
-                'name' => 'Beres',
-                'bg_color' => '#0c47ac',
-                'border_color' => '#ffffff',
-                'dark_theme' => 0,
-                'image' => new UploadedFile(public_path('/images/veres-2.png'), 'veres.png'),
-                'width' => '300',
-                'height' => '300',
-                'phone' => 'phone',
-                'email' => 'email'
+                'name' => $request->get('name'),
+                'bg_color' => $request->get('bg-color'),
+                'border_color' => $request->get('border-color'),
+                'dark_theme' => $request->get('dark-theme'),
+                'image' => $request->file('image'),
+                'width' => $request->file('width'),
+                'height' => $request->file('height'),
+                'phone' => $request->file('phone'),
+                'email' => $request->file('email')
             ];
             $url = $imageGenerationService->generate($data);
 
