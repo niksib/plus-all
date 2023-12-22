@@ -21,7 +21,7 @@ class ImageGenerationService
             ->noSandbox()
             ->newHeadless()
             ->windowSize(1920, 1080)
-            ->save('app/public/' . storage_path($bannerPath));
+            ->save( storage_path('app/public/' . $bannerPath));
 
         return $bannerPath;
     }
