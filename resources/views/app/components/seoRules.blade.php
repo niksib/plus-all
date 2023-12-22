@@ -22,7 +22,7 @@
     <meta name="description" content="{{ $metaDescription ?? '' }}">
     <meta name="keywords" content="{{ $metaKeywords ?? '' }}">
 
-    <meta property="og:title" content="{{ $metaTitle ?? 'Meest ПОШТА' }}" />
+    <meta property="og:title" content="{{ $metaTitle ?? '' }}" />
     <meta property="og:url" content="{{ url()->current() }}" />
     <meta property="og:image" content="{{ $ogImage ?? request()->root() . '/images/share_main.png'}}" />
     <meta property="og:locale" content="{{ \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getCurrentLocale() }}">
