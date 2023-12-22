@@ -24,7 +24,7 @@ class ImageGenerationController extends Controller
     public function generate(
         Request $request
     ): JsonResponse {
-        try {
+//        try {
             $imageGenerationService = new ImageGenerationService();
             $data = [
                 'name' => $request->get('name'),
@@ -37,16 +37,27 @@ class ImageGenerationController extends Controller
                 'phone' => $request->get('phone'),
                 'email' => $request->get('email')
             ];
+            $data = [
+                'name' => 'Beres',
+                'bg_color' => '#0c47ac',
+                'border_color' => '#ffffff',
+                'dark_theme' => 0,
+                'image' => new UploadedFile(public_path('/images/veres-2.png'), 'veres.png'),
+                'width' => '300',
+                'height' => '300',
+                'phone' => 'phone',
+                'email' => 'email'
+            ];
             $url = $imageGenerationService->generate($data);
 
             return response()->json([
                 'url' => $url
             ]);
-        } catch (Exception $exception) {
-            return response()->json([
-                'message' => $exception->getMessage()
-            ], 500);
-        }
+//        } catch (Exception $exception) {
+//            return response()->json([
+//                'message' => $exception->getMessage()
+//            ], 500);
+//        }
     }
 
     public function banner(
