@@ -32,10 +32,10 @@ class ImageGenerationController extends Controller
                 'border_color' => $request->get('border-color'),
                 'dark_theme' => $request->get('dark-theme', '0'),
                 'image' => $request->file('image'),
-                'width' => $request->file('width'),
-                'height' => $request->file('height'),
-                'phone' => $request->file('phone'),
-                'email' => $request->file('email')
+                'width' => $request->get('width'),
+                'height' => $request->get('height'),
+                'phone' => $request->get('phone'),
+                'email' => $request->get('email')
             ];
             $url = $imageGenerationService->generate($data);
 
