@@ -236,7 +236,7 @@
                                 <div class="exemples-content">
                                     @foreach($banners as $banner)
                                         <div class="exemples-img-wrap">
-                                            <img class="exemples-img" src="/storage/{{ $banner->image }}">
+                                            <img class="exemples-img" src="/storage/{{ $banner->getBannerPath() }}">
                                         </div>
                                     @endforeach
                                 </div>
