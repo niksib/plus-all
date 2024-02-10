@@ -46,6 +46,7 @@ Route::middleware(['auth', 'verified', 'permissions'])
         Route::resource('settings', SettingController::class)->except(['show']);
         Route::get('/translations/google-sync', [TranslationController::class, 'googleSheetSync'])->name('translations.sync');
         Route::resource('banners', BannerController::class)->except(['show', 'edit', 'store', 'create', 'update']);
+        Route::get('/banners/download', [BannerController::class, 'export'])->name('banners.download');
 
         Route::get('/file-manager', [FileManagerController::class, 'index'])->name('file-manager');
     });

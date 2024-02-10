@@ -7,7 +7,7 @@ const appName = window.document.getElementsByTagName('title')[0]?.innerText || '
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => require(`./Pages/${name}.vue`),
+    resolve: (name) => import(`./Pages/${name}.vue`),
     progress: {
         color: '#29d',
     },

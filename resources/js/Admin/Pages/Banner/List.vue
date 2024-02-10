@@ -18,6 +18,7 @@ const proxyFilters = ref(props.filters);
     <BreezeAuthenticatedLayout>
         <h1 class="font-bold text-2xl text-gray-700 flex items-center">
             Список банері
+            <a :href="route('admin.banners.download')" class="text-white bg-slate-500 hover:bg-slate-600 focus:outline-none focus:ring-4 focus:ring-slate-300 font-medium rounded-full text-sm px-3 py-1 ml-3 text-center">Скачати</a>
         </h1>
 
         <div class="flex flex-col flex-grow bg-white rounded mt-4">
@@ -25,6 +26,9 @@ const proxyFilters = ref(props.filters);
                 <table class="w-full text-sm text-left text-gray-500">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Назва
+                        </th>
                         <th scope="col" class="px-6 py-3">
                             Email
                         </th>
@@ -41,6 +45,9 @@ const proxyFilters = ref(props.filters);
                         :key="'table-item-' + itemIndex"
                         class="bg-white border-b"
                     >
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900">
+                            {{ item.name }}
+                        </th>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900">
                             {{ item.email }}
                         </th>
