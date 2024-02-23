@@ -3,7 +3,7 @@
         <div class="footer-container">
             <div class="footer-first">
                 <a class="footer-logo" href="{{ route('home') }}">
-                    <img src="/images/logo-w.svg" alt="logo" title="polonez"></a>
+                    <img src="/svg/logo-ua-mob-w.svg" alt="logo" title="polonez"></a>
                 <div class="footer-soc">
                     @foreach($socialFooter as $social)
                         <a href="{{ $social->lang->url }}" class="footer-soc-el">

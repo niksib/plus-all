@@ -2,7 +2,10 @@
     <div class="container">
         <div class="header-inner">
             <a class="header-logo" href="{{ route('home') }}">
-                <img src="/images/logo.svg">
+                <picture>
+                    <source media="(max-width: 991px)" srcset="/svg/logo-ua-mob.svg">
+                    <source media="(min-width: 992px)" srcset="/svg/logo-ua.svg">
+                    <img src="/svg/logo-ua.svg" alt="Зроблено в Україні"></picture>
             </a>
             <div class="mob-control">
                 <div class="mob-control-buttons">
