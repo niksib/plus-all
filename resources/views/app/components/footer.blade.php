@@ -3,7 +3,7 @@
         <div class="footer-container">
             <div class="footer-first">
                 <a class="footer-logo" href="{{ route('home') }}">
-                    <img src="/svg/logo-ua-mob-w.svg" alt="logo" title="polonez"></a>
+                    <img src="/svg/logo-{{ app()->getLocale() === 'en' ? 'eng' : 'ua' }}-mob-w.svg" alt="logo" title="polonez"></a>
                 <div class="footer-soc">
                     @foreach($socialFooter as $social)
                         <a href="{{ $social->lang->url }}" class="footer-soc-el">
@@ -11,6 +11,10 @@
                             <span class="footer-soc-text">{{ $social->lang->title }}</span>
                         </a>
                     @endforeach
+                </div>
+                <div class="footer-tags footer-tags--add">
+                    <span>{{ trans('footer.tag-0') }}</span>
+                    <a class="footer-tags-link--add" href="http://pulse.gov.ua/" target="_blank">pulse.gov.ua</a>
                 </div>
                 <div class="footer-tags">
                     <span class="footer-tags-text">{{ trans('footer.tag-1') }}</span>
