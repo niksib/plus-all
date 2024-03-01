@@ -19,7 +19,8 @@ const removePreviewImg = (e) =>{
     const formImg = document.querySelector('.workshop-form [name="image"]');
     const formMultiplier = document.querySelector('.workshop-form [name="multiplier"]');
     const textInfo = document.querySelector('.workshop-form-text--check');
-
+    const submitBtn = document.querySelector('.workshop-form-submit');
+    
 
     const getText = formImg.dataset.text;
 
@@ -27,8 +28,9 @@ const removePreviewImg = (e) =>{
         productImg.remove();
         formImg.classList.remove('active');
         textInfo.classList.remove('active');
+        submitBtn.disabled = true;
         formImg.nextElementSibling.querySelector('.input-img-text').textContent = getText;
-
+        
         formMultiplier.setAttribute('disabled','');
         wImg = '';
         hImg = '';
@@ -83,11 +85,11 @@ const validatorForm = (_key) => {
             valid = false;
             if(!_key){
                 document.querySelector(`.workshop-form [name="${_d[0]}"]`).classList.add('field-error');
-            }
+            }            
         }
 
 
-
+        
     }
 
     if(_key){
@@ -115,7 +117,7 @@ const phone_number_mask = (e) => {
     let myOutPut = ""
     let theLastPos = 4;
     myText = ''+myCaja.value?.length < 2 ? myMask+myCaja.value : myCaja.value;
-
+  
     //get numbers
     for (let i = 2; i < myText.length; i++) {
       if (!isNaN(myText.charAt(i)) && myText.charAt(i) != " ") {
@@ -124,7 +126,7 @@ const phone_number_mask = (e) => {
     }
     //write over mask
     for (let j = 0; j < myMask.length; j++) {
-      if (myMask.charAt(j) == "_") { //replace "_" by a number
+      if (myMask.charAt(j) == "_") { //replace "_" by a number 
         if (myNumbers.length == 0)
           myOutPut = myOutPut + myMask.charAt(j);
         else {
@@ -140,7 +142,7 @@ const phone_number_mask = (e) => {
   }
 
   async function fetchGeneratorJSON(bodyData) {
-    const response = await window.fetch('/image-generation/generate',
+    const response = await window.fetch('https://plus.buyperlink.com/image-generation/generate',
     {
         method: 'POST',
         body: bodyData,
@@ -160,7 +162,7 @@ const formFunction = () => {
     const generatorProductWrap = document.getElementById('generator-product');
     const generatorText = document.getElementById('generator-text');
 	const generatorTitle = document.querySelector('.generator-title');
-
+	
     const generatorBorder = document.querySelector('.generator-border-img svg');
 	const generatorLogo = document.querySelector('.generator-logo svg');
 
@@ -173,10 +175,12 @@ const formFunction = () => {
     const textInfo = document.querySelector('.workshop-form-text--check');
 
     const btnCloseImg = document.querySelector('.workshop-form .input-img-close-icon');
-
+	
     const formEmail = document.querySelector('.workshop-form [name="email"]');
     const formPhone = document.querySelector('.workshop-form [name="phone"]');
     const submitBtn = document.querySelector('.workshop-form-submit');
+
+
 
     const previewFile = () => {
 
@@ -184,6 +188,7 @@ const formFunction = () => {
         const reader = new FileReader();
 
         reader.onloadend = function() {
+            const productImg = document.getElementById('product-img');
             //preview.src = reader.result;
 
             let img = new Image();
@@ -191,6 +196,11 @@ const formFunction = () => {
             img.id = 'product-img';
             //img.width=176;
             //img.height=310;
+            
+            if (productImg) {
+                productImg.remove();
+            }
+
             generatorProductWrap.appendChild(img);
             formImg.classList.add('active');
             textInfo.classList.add('active');
@@ -207,8 +217,7 @@ const formFunction = () => {
         if (file) {
             reader.readAsDataURL(file);
         } else {
-            removePreviewImg();
-
+            //removePreviewImg();
         }
 
         validatorForm('_');
@@ -248,7 +257,7 @@ const formFunction = () => {
         if(e.target.classList.contains('field-error')){
             e.target.classList.remove('field-error');
         }
-
+       
         if (!val) {
             generatorText.innerText = '...'
         } else {
@@ -316,10 +325,10 @@ const formFunction = () => {
     formName.addEventListener('input', previewTextHandler);
     formName.addEventListener('blur', onBlurHandler);
 
-
+	
     formBgColor.addEventListener('input', chageColorBg);
 
-
+	
     formBoderColor.addEventListener('input', chageColorBorder);
 
 	formCheckDark.addEventListener('change', isDarkText);
@@ -331,7 +340,7 @@ const formFunction = () => {
 
     formPhone.addEventListener('blur', onBlurHandler);
     formPhone.addEventListener('input', phone_number_mask);
-
+    
 
     submitBtn.addEventListener('click', async (e) => {
         e.preventDefault();
@@ -339,7 +348,10 @@ const formFunction = () => {
 
         if(!res){return null;}
 
+
+
         const _target = e.target;
+                console.log('_target',_target);
         _target.disabled = true;
         _target.classList.add('btn--load');
 
@@ -366,7 +378,7 @@ const formFunction = () => {
                 throw new Error('Empty image');
             }
             window.open(res.url);
-
+            
         }catch(e){
             window.alert('Error')
         }finally{
