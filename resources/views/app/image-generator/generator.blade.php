@@ -39,7 +39,7 @@
                         @csrf
                         <div class="workshop-form-row workshop-form-row-1">
                             <div class="input-wrap"><label class="input-label field-label">{{ trans('generator.company-name') }}</label>
-                                <div class="input-content"><input name="product-name" type="text" class="input" placeholder="Огірки" required></div>
+                                <div class="input-content"><input name="product-name" type="text" class="input" placeholder="{{ trans('generator.company-name-placeholder') }}" required></div>
                             </div>
                             <div class="input-wrap">
                                 <label class="input-label field-label">{{ trans('generator.brand-name') }}</label>
