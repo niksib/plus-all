@@ -9,8 +9,8 @@ class Banner extends Model
     protected $table = 'banners';
 
     protected $fillable = [
-        'name', 'multiplier', 'bg_color', 'border_color', 'dark_theme', 'image',
-        'width', 'height', 'phone', 'email'
+        'name', 'multiplier', 'bg_color', 'dark_theme', 'image',
+        'width', 'height', 'phone', 'email', 'company'
     ];
 
     public function getBannerPath(): string

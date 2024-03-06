@@ -32,8 +32,8 @@ class ImageGenerationRequest extends FormRequest
     {
         return [
             'name' => 'required|max:30',
+            'product-name' => 'required|max:30',
             'bg-color' => 'required|max:10',
-            'border-color' => 'required|max:10',
             'image' => 'required|image',
             'width' => 'required|max:5',
             'height' => 'required|max:5',

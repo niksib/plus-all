@@ -19,32 +19,16 @@
                         <h1 class="workshop-title">{{ trans('generator.title') }}</h1>
                         <span class="workshop-subtitle text">{{ trans('generator.subtitle') }}</span>
                     </div>
-                    <div class="generator" id="generator"><p class="generator-title">
-                            {{ trans('generator.image-title') }}<br><span class="generator-title-name" id="generator-text">...</span>
-                            — <br>{{ trans('generator.image-subtitle') }}
+                    <div class="generator" id="generator">
+                        <p class="generator-title">
+                            {{ trans('generator.image-title') }}<br>
+                            {{ trans('generator.image-subtitle') }} <br><span class="generator-title-name" id="generator-text2">...</span>
+                            від <span class="generator-title-name" id="generator-text">...</span>
                         </p>
                         <div class="generator-border-img" id="generator-border">
-                            <svg width="249" height="291" viewBox="0 0 249 291" fill="#1C73FF"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_291_945)">
-                                    <path
-                                        d="M232.651 0.840088H217.113H201.921H201.574H186.482H186.382H170.944H155.768H155.406H140.333H140.234H124.795H109.273H109.257H93.7345H78.2123H78.1964H62.6741H47.331H47.1359H31.9162H31.7928H16.378H0.839844V16.4051V31.9702V47.5353H16.378V31.9702V16.4051H31.7928H31.9162H47.1359H47.331H62.6741H78.1964H78.2123H93.7345H109.257H109.273H124.795H140.234H140.333H155.406H155.768H170.944H186.382H186.482H201.574H201.921H217.113H232.651V31.9702V47.5353H248.185V31.9702V16.4051V0.840088H232.651Z"
-                                        fill="#1C73FF"></path>
-                                    <path
-                                        d="M232.651 290.205H217.113H201.921H201.574H186.482H186.382H170.944H155.768H155.406H140.333H140.234H124.795H109.273H109.257H93.7345H78.2123H78.1964H62.6741H47.331H47.1359H31.9162H31.7928H16.378H0.839844V274.64V259.075V243.51H16.378V259.075V274.64H31.7928H31.9162H47.1359H47.331H62.6741H78.1964H78.2123H93.7345H109.257H109.273H124.795H140.234H140.333H155.406H155.768H170.944H186.382H186.482H201.574H201.921H217.113H232.651V259.075V243.51H248.185V259.075V274.64V290.205H232.651Z"
-                                        fill="#1C73FF"></path>
-                                    <path
-                                        d="M75.442 159.589H173.348C174.936 159.589 175.744 161.498 174.637 162.639L125.682 213.169C124.978 213.899 123.812 213.899 123.103 213.169L74.1485 162.639C73.042 161.498 73.85 159.589 75.438 159.589H75.442Z"
-                                        fill="#1C73FF"></path>
-                                    <path d="M151.907 76.5283H96.8906V169.664H151.907V76.5283Z" fill="#1C73FF"></path>
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_291_945">
-                                        <rect width="247.345" height="289.365" fill="white"
-                                              transform="translate(0.839844 0.840088)"></rect>
-                                    </clipPath>
-                                </defs>
-                            </svg>
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 909.5 909.5" style="enable-background:new 0 0 909.5 909.5;" xml:space="preserve"><path class="st0" fill="#FFF" d="M454.8,0C203.6,0,0,203.6,0,454.8s203.6,454.8,454.8,454.8s454.8-203.6,454.8-454.8S705.9,0,454.8,0z
+                M666.7,528.5L460.2,741.3c-3,3.1-7.9,3.1-10.9,0L242.8,528.5c-4.7-4.8-1.3-12.9,5.4-12.9h90.5V165.9h232.1v349.8h90.5
+                C668,515.7,671.4,523.7,666.7,528.5z"></path></svg>
                         </div>
                         <div class="generator-logo">
                             <img class="generator-logo-sticker" src="/svg/sticker-logo.svg" alt="Maid in Ukraine">
@@ -54,21 +38,26 @@
                     <form class="workshop-form" id="form-workshop">
                         @csrf
                         <div class="workshop-form-row workshop-form-row-1">
+                            <div class="input-wrap"><label class="input-label field-label">{{ trans('generator.company-name') }}</label>
+                                <div class="input-content"><input name="product-name" type="text" class="input" placeholder="Огірки" required></div>
+                            </div>
                             <div class="input-wrap">
                                 <label class="input-label field-label">{{ trans('generator.brand-name') }}</label>
                                 <div class="input-content">
                                     <input name="name" type="text" class="input" placeholder="Beres" required></div>
                             </div>
                             <div class="workshop-form-colors-block">
-                                <div><label class="input-label field-label">{{ trans('generator.text-color') }}</label>
-                                    <div class="workshop-form-checkbox-wrap">
-                                        <input class="workshop-form-checkbox" id="isDark" type="checkbox" name="dark-theme">
-                                    </div>
-                                </div>
                                 <div class="workshop-form-colors-right"><label class="input-label field-label">{{ trans('generator.brand-color') }}</label>
                                     <div class="workshop-form-colors-wrap">
                                         <input class="input-color" type="color" name="bg-color" value="#0054EA">
-                                        <input class="input-color" type="color" name="border-color" value="#1C73FF"></div>
+                                        {{--                                        <input class="input-color" type="color" name="border-color" value="#1C73FF">--}}
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="input-label field-label">{{ trans('generator.text-color') }}</label>
+                                    <div class="workshop-form-checkbox-wrap">
+                                        <input class="workshop-form-checkbox" id="isDark" type="checkbox" name="dark-theme">
+                                    </div>
                                 </div>
                             </div>
                         </div>

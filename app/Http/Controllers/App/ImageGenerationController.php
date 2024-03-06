@@ -12,8 +12,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 
 class ImageGenerationController extends Controller
 {
@@ -41,7 +39,8 @@ class ImageGenerationController extends Controller
                 'width' => $request->get('width'),
                 'height' => $request->get('height'),
                 'phone' => $request->get('phone'),
-                'email' => $request->get('email')
+                'email' => $request->get('email'),
+                'company' => $request->get('product-name')
             ];
             $url = $imageGenerationService->generate($data);
 

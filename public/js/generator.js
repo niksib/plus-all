@@ -20,7 +20,7 @@ const removePreviewImg = (e) =>{
     const formMultiplier = document.querySelector('.workshop-form [name="multiplier"]');
     const textInfo = document.querySelector('.workshop-form-text--check');
     const submitBtn = document.querySelector('.workshop-form-submit');
-    
+
 
     const getText = formImg.dataset.text;
 
@@ -30,7 +30,7 @@ const removePreviewImg = (e) =>{
         textInfo.classList.remove('active');
         submitBtn.disabled = true;
         formImg.nextElementSibling.querySelector('.input-img-text').textContent = getText;
-        
+
         formMultiplier.setAttribute('disabled','');
         wImg = '';
         hImg = '';
@@ -85,11 +85,11 @@ const validatorForm = (_key) => {
             valid = false;
             if(!_key){
                 document.querySelector(`.workshop-form [name="${_d[0]}"]`).classList.add('field-error');
-            }            
+            }
         }
 
 
-        
+
     }
 
     if(_key){
@@ -117,7 +117,7 @@ const phone_number_mask = (e) => {
     let myOutPut = ""
     let theLastPos = 4;
     myText = ''+myCaja.value?.length < 2 ? myMask+myCaja.value : myCaja.value;
-  
+
     //get numbers
     for (let i = 2; i < myText.length; i++) {
       if (!isNaN(myText.charAt(i)) && myText.charAt(i) != " ") {
@@ -126,7 +126,7 @@ const phone_number_mask = (e) => {
     }
     //write over mask
     for (let j = 0; j < myMask.length; j++) {
-      if (myMask.charAt(j) == "_") { //replace "_" by a number 
+      if (myMask.charAt(j) == "_") { //replace "_" by a number
         if (myNumbers.length == 0)
           myOutPut = myOutPut + myMask.charAt(j);
         else {
@@ -161,12 +161,14 @@ const formFunction = () => {
 	const generatorProduct = document.getElementById('generator');
     const generatorProductWrap = document.getElementById('generator-product');
     const generatorText = document.getElementById('generator-text');
+    const generatorText2 = document.getElementById('generator-text2');
 	const generatorTitle = document.querySelector('.generator-title');
-	
+
     const generatorBorder = document.querySelector('.generator-border-img svg');
 	const generatorLogo = document.querySelector('.generator-logo svg');
 
     const formName = document.querySelector('.workshop-form [name="name"]');
+    const formProductName = document.querySelector('.workshop-form [name="product-name"]');
     const formImg = document.querySelector('.workshop-form [name="image"]');
     const formBgColor = document.querySelector('.workshop-form [name="bg-color"]');
     const formBoderColor = document.querySelector('.workshop-form [name="border-color"]');
@@ -175,7 +177,7 @@ const formFunction = () => {
     const textInfo = document.querySelector('.workshop-form-text--check');
 
     const btnCloseImg = document.querySelector('.workshop-form .input-img-close-icon');
-	
+
     const formEmail = document.querySelector('.workshop-form [name="email"]');
     const formPhone = document.querySelector('.workshop-form [name="phone"]');
     const submitBtn = document.querySelector('.workshop-form-submit');
@@ -190,13 +192,16 @@ const formFunction = () => {
         reader.onloadend = function() {
             const productImg = document.getElementById('product-img');
             //preview.src = reader.result;
+            formMultiplier.value = '1';
 
             let img = new Image();
             img.src = reader.result;
             img.id = 'product-img';
+            img.style.maxWidth = '100%';
+            img.style.maxHeight = '100%';
             //img.width=176;
             //img.height=310;
-            
+
             if (productImg) {
                 productImg.remove();
             }
@@ -205,7 +210,8 @@ const formFunction = () => {
             formImg.classList.add('active');
             textInfo.classList.add('active');
             formImg.nextElementSibling.querySelector('.input-img-text').textContent = file.name;
-			// const productImg = document.getElementById('product-img');
+            wImg = img.width;
+            hImg = img.height;
 
 			// if (productImg) {
             //     wImg = generatorProduct?.offsetWidth;
@@ -253,15 +259,25 @@ const formFunction = () => {
 
     const previewTextHandler = (e) => {
 
-        const val = e.target.value
+        const val = e.target.value;
+        const name = e.target.getAttribute('name');
         if(e.target.classList.contains('field-error')){
             e.target.classList.remove('field-error');
         }
-       
+
         if (!val) {
-            generatorText.innerText = '...'
+            if(name === 'name'){
+                generatorText.innerText = '...'
+            }else if( name === 'product-name'){
+                generatorText2.innerText = '...'
+            }
+
         } else {
-            generatorText.innerText = e.target.value
+            if(name === 'name'){
+                generatorText.innerText = e.target.value
+            }else if( name === 'product-name'){
+                generatorText2.innerText = e.target.value
+            }
         }
     }
 
@@ -273,31 +289,36 @@ const formFunction = () => {
         }
     }
 
-	const chageColorBorder = (e) => {
-        const val = e.target.value
-        if (val) {
-            generatorBorder.setAttribute("fill", e.target.value)
-        }
-    }
+	// const chageColorBorder = (e) => {
+    //     const val = e.target.value
+    //     if (val) {
+    //         generatorBorder.setAttribute("fill", e.target.value)
+    //     }
+    // }
 
 	const hadlerMultiplier = (e)=>{
 		const _img = document.getElementById('product-img');
 		if(!wImg) wImg = _img.offsetWidth;
 		if(!hImg) hImg = _img.offsetHeight;
+        _img.removeAttribute('style');
 		if(_img && wImg && hImg){
 			const val = e.target.value;
 			const newWidth = wImg * val;
 			const newHeight = hImg * val;
+
+            console.log('--------',val,wImg,hImg,newWidth,newHeight)
 			const maxWidth = generatorProductWrap.offsetWidth;
 			const maxHeight = generatorProductWrap.offsetHeight;
 
 			if (val) {
-				if(!(newHeight > maxHeight)){
-				_img.setAttribute('width', Math.round(newWidth >= maxWidth ? maxWidth : newWidth));
-				}
-				if(!(newWidth > maxWidth)){
-				_img.setAttribute('height', Math.round(newHeight >= maxHeight ? maxHeight : newHeight));
-				}
+                _img.setAttribute('width', Math.round(newWidth));
+                _img.setAttribute('height', Math.round(newHeight));
+				// if(!(newHeight > maxHeight)){
+				// _img.setAttribute('width', Math.round(newWidth >= maxWidth ? maxWidth : newWidth));
+				// }
+				// if(!(newWidth > maxWidth)){
+				// _img.setAttribute('height', Math.round(newHeight >= maxHeight ? maxHeight : newHeight));
+				// }
 			}
 		}
 	}
@@ -325,11 +346,13 @@ const formFunction = () => {
     formName.addEventListener('input', previewTextHandler);
     formName.addEventListener('blur', onBlurHandler);
 
-	
+    formProductName.addEventListener('input', previewTextHandler);
+    formProductName.addEventListener('blur', onBlurHandler);
+
     formBgColor.addEventListener('input', chageColorBg);
 
-	
-    formBoderColor.addEventListener('input', chageColorBorder);
+
+    // formBoderColor.addEventListener('input', chageColorBorder);
 
 	formCheckDark.addEventListener('change', isDarkText);
 
@@ -340,7 +363,7 @@ const formFunction = () => {
 
     formPhone.addEventListener('blur', onBlurHandler);
     formPhone.addEventListener('input', phone_number_mask);
-    
+
 
     submitBtn.addEventListener('click', async (e) => {
         e.preventDefault();
@@ -371,6 +394,11 @@ const formFunction = () => {
 
         // const json = JSON.stringify(object);
 
+
+        // for (var pair of formData.entries()) {
+        //     console.log(pair[0]+ ', ' + pair[1]);
+        // }
+
         try{
             const res = await fetchGeneratorJSON(formData);
 
@@ -378,7 +406,7 @@ const formFunction = () => {
                 throw new Error('Empty image');
             }
             window.open(res.url);
-            
+
         }catch(e){
             window.alert('Error')
         }finally{

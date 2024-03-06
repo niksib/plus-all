@@ -30,6 +30,9 @@ const proxyFilters = ref(props.filters);
                             Назва
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Продукт
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Email
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -47,6 +50,9 @@ const proxyFilters = ref(props.filters);
                     >
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900">
                             {{ item.name }}
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900">
+                            {{ item.company }}
                         </th>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900">
                             {{ item.email }}

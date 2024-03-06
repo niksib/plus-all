@@ -291,11 +291,11 @@ class TranslationSeeder extends Seeder
                 ],
                 'image-title' => [
                     'en' => '',
-                    'uk' => 'Коли купуєш '
+                    'uk' => 'Усі в плюсі,'
                 ],
                 'image-subtitle' => [
                     'en' => '',
-                    'uk' => 'плюсуєш своє'
+                    'uk' => 'коли купуєш'
                 ],
                 'brand-name' => [
                     'en' => '',
@@ -366,6 +366,10 @@ class TranslationSeeder extends Seeder
                     'en' => '',
                     'uk' => 'Приклади згенерованих банерів'
                 ],
+                'company-name' => [
+                    'en' => '',
+                    'uk' => 'Вкажіть назву продукту*'
+                ]
             ],
             '404' => [
                 'title' => [
