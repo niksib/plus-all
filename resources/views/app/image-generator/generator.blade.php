@@ -23,7 +23,7 @@
                         <p class="generator-title">
                             {{ trans('generator.image-title') }}<br>
                             {{ trans('generator.image-subtitle') }} <br><span class="generator-title-name" id="generator-text2">...</span>
-                            від <span class="generator-title-name" id="generator-text">...</span>
+                            {{ trans('generator.image-from') }} <span class="generator-title-name" id="generator-text">...</span>
                         </p>
                         <div class="generator-border-img" id="generator-border">
                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 909.5 909.5" style="enable-background:new 0 0 909.5 909.5;" xml:space="preserve"><path class="st0" fill="#FFF" d="M454.8,0C203.6,0,0,203.6,0,454.8s203.6,454.8,454.8,454.8s454.8-203.6,454.8-454.8S705.9,0,454.8,0z

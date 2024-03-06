@@ -16,9 +16,9 @@
         <img src="/storage/{{ $banner->image }}" width="{{ $banner->width }}" height="{{ $banner->height }}" alt="exemple">
         <div class="generator {{ $banner->dark_theme ? 'generator--inversion' : '' }}" id="generator" style="background-color: {{ $banner->bg_color }}">
             <p class="generator-title">
-                Усі в плюсі,<br>
-                коли купуєш <br><span class="generator-title-name" id="generator-text2">{{ $banner->name }}</span>
-                від <span class="generator-title-name" id="generator-text">{{ $banner->company }}</span>
+                {{ trans('generator.image-title') }}<br>
+                {{ trans('generator.image-subtitle') }} <br><span class="generator-title-name" id="generator-text2">{{ $banner->name }}</span>
+                {{ trans('generator.image-from') }} <span class="generator-title-name" id="generator-text">{{ $banner->company }}</span>
             </p>
             <div class="generator-border-img" id="generator-border">
                 <svg width="249" height="291" viewBox="0 0 249 291" fill="{{ $banner->border_color }}" xmlns="http://www.w3.org/2000/svg">
