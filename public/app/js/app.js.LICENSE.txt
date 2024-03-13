@@ -30,12 +30,3 @@
  *
  * Date: 2022-12-20T21:28Z
  */
-
-/*!
- * jQuery Validation Plugin v1.19.5
- *
- * https://jqueryvalidation.org/
- *
- * Copyright (c) 2022 Jörn Zaefferer
- * Released under the MIT license
- */
