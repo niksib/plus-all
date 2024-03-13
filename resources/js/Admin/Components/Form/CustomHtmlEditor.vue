@@ -38,6 +38,7 @@ const tinyMceOptions = {
             {{ label }}
         </label>
         <Editor
+            api-key="f5wh8ippfgetld5ogfmcsqquq5sg361e218dgtfrfvebcytr"
             :init="tinyMceOptions"
             :initial-value="modelValue"
         />
