@@ -245,6 +245,10 @@ __webpack_require__.r(__webpack_exports__);
       group: 'admin.menu',
       title: 'Меню'
     }, {
+      route: 'admin.leads.index',
+      group: 'admin.leads',
+      title: 'Ліди'
+    }, {
       route: null,
       title: 'Управління'
     }, {

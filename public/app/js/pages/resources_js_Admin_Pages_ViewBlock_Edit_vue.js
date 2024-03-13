@@ -763,6 +763,10 @@ __webpack_require__.r(__webpack_exports__);
       group: 'admin.menu',
       title: 'Меню'
     }, {
+      route: 'admin.leads.index',
+      group: 'admin.leads',
+      title: 'Ліди'
+    }, {
       route: null,
       title: 'Управління'
     }, {
@@ -1041,7 +1045,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       'text-red-700': $props.errors && $props.errors[$props.name]
     }])
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.label), 3 /* TEXT, CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Editor"], {
-    "api-key": "yg0y64x52v5fs5ewtxcvodaoea7dv816x3pzdaphph2cuz3s",
+    "api-key": "f5wh8ippfgetld5ogfmcsqquq5sg361e218dgtfrfvebcytr",
     init: $setup.tinyMceOptions,
     "initial-value": $props.modelValue
   }, null, 8 /* PROPS */, ["initial-value"]), $props.errors && $props.errors[$props.name] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.errors[$props.name]), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);

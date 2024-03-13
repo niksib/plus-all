@@ -4,9 +4,11 @@ namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImageGenerationRequest;
+use App\Http\Requests\LeadDowloadRequest;
 use App\Services\ImageGeneration\Repositories\BannerFrontRepository;
 use App\Services\ImageGeneration\Repositories\BannerRepository;
 use App\Services\ImageGeneration\Services\ImageGenerationService;
+use App\Services\Lead\Repositories\LeadRepository;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -67,5 +69,26 @@ class ImageGenerationController extends Controller
         return view('app.image-generator.banner', [
             'banner' => $banner
         ]);
+    }
+
+    public function download(LeadDowloadRequest $request): JsonResponse
+    {
+        try {
+            $leadRepository = new LeadRepository();
+
+            $leadRepository->create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone
+            ]);
+
+            response()->json([
+                'downloadUrl' => trans('modal-download.url-for-download')
+            ]);
+        } catch (Exception $exception) {
+            return response()->json([
+                'error' => $exception->getMessage()
+            ]);
+        }
     }
 }

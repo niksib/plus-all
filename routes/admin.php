@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\FileManagerController;
+use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\SeoRuleLangController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ViewBlockLangController;
@@ -47,6 +48,8 @@ Route::middleware(['auth', 'verified', 'permissions'])
         Route::get('/translations/google-sync', [TranslationController::class, 'googleSheetSync'])->name('translations.sync');
         Route::resource('banners', BannerController::class)->except(['show', 'edit', 'store', 'create', 'update']);
         Route::get('/banners/download', [BannerController::class, 'export'])->name('banners.download');
+        Route::resource('leads', LeadController::class)->except(['show', 'edit', 'store', 'create', 'update']);
+        Route::get('/leads/download', [LeadController::class, 'export'])->name('leads.download');
 
         Route::get('/file-manager', [FileManagerController::class, 'index'])->name('file-manager');
     });

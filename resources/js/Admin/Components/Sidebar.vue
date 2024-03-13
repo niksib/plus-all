@@ -57,6 +57,11 @@ const menuItems = ref([
         title: 'Меню',
     },
     {
+        route: 'admin.leads.index',
+        group: 'admin.leads',
+        title: 'Ліди',
+    },
+    {
         route: null,
         title: 'Управління'
     },

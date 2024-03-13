@@ -10,4 +10,5 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/image-generator', [ImageGenerationController::class, 'generator'])->name('image-generation.generator');
     Route::post('/image-generation/generate', [ImageGenerationController::class, 'generate'])->name('image-generation.generate');
     Route::get('/image-generation/banner/{id}', [ImageGenerationController::class, 'banner'])->name('image-generation.banner');
+    Route::post('/image-generation/download', [ImageGenerationController::class, 'download'])->name('image-generation.download');
 });
