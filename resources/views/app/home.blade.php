@@ -183,7 +183,7 @@
             <div class="manufacturer-body">
                 <div class="action">
                     <h5 class="action-title">{{ trans('manufacturer.card-1-title') }}</h5>
-                    <a href="{{ trans('links.stickers-download') }}" class="btn  btn--blue ">
+                    <a href="{{ trans('links.stickers-download') }}" class="btn  btn--blue download-stickers">
                         <span class="btn-text">{{ trans('manufacturer.card-1-btn') }}</span>
                         <svg class="btn-download" width="36" height="36" viewBox="0 0 36 36" fill="none"
                              xmlns="http://www.w3.org/2000/svg">

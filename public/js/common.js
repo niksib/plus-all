@@ -1,14 +1,19 @@
+function _onScroll(){
+	const headerInner = document.querySelector('.header');
+
+	if (window.scrollY >32) {
+		headerInner?.classList?.add('header--sticky');
+	} else {
+		headerInner?.classList?.remove('header--sticky');
+	}
+}
+
+
 document.onreadystatechange = function () {
 	if (document.readyState === "complete") {
 
 		window.addEventListener('scroll', function() {
-			const headerInner = document.querySelector('.header');
-
-			if (window.scrollY >32) {
-				headerInner?.classList?.add('header--sticky');
-			} else {
-				headerInner?.classList?.remove('header--sticky');
-			}
+			_onScroll();
 		});
 
 		const body = document.querySelector('.body-child');
@@ -16,6 +21,14 @@ document.onreadystatechange = function () {
 		const mobElManu = document.querySelectorAll('.header .menu-el-text');
 		const menuMob = document.querySelector('.header .main-menu');
 		const endlesses = document.querySelectorAll('.endless');
+
+		const allBtnsDownloads = document.querySelectorAll('.download-stickers')
+		const modalDownload = document.getElementById('modal-download');
+		const closeModalDownload = document.querySelector('.modal-close');
+		
+		const nextStepModalDownload = document.querySelector('#modal-download .modal-agree-block-submit');
+		const agreeModalDownload = document.querySelector('#modal-download .modal-agree-block');
+		const formModalDownload = document.querySelector('#modal-download .modal-form-block');
 
 
 
@@ -75,6 +88,15 @@ document.onreadystatechange = function () {
 
 		}
 
+		allBtnsDownloads.forEach(function(button) {
+			button.addEventListener('click',(e)=>{
+				e.preventDefault();
+				const elem = e.target;
+				modalDownload.classList.add('modal--open');
+				console.log('----ele',elem);
+			})
+		});
+
 
 		mobButtons.forEach(function(button) {
 			button.addEventListener('click',(e)=>{
@@ -93,6 +115,22 @@ document.onreadystatechange = function () {
 				}
 			})
 		});
+
+
+
+		closeModalDownload.addEventListener('click',(e)=>{
+			modalDownload.classList.remove('modal--open');
+			agreeModalDownload.classList.add('modal-agree-block--active');
+			formModalDownload.classList.remove('modal-form-block--active');
+		})
+
+		nextStepModalDownload.addEventListener('click',(e)=>{
+			agreeModalDownload.classList.remove('modal-agree-block--active');
+			formModalDownload.classList.add('modal-form-block--active');
+		})
+
+
+		_onScroll();
 
 	}
 }

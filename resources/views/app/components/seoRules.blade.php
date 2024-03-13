@@ -24,6 +24,14 @@
 
     <meta property="og:title" content="{{ $metaTitle ?? '' }}" />
     <meta property="og:url" content="{{ url()->current() }}" />
-    <meta property="og:image" content="{{ $ogImage ?? request()->root() . '/images/share_main.png'}}" />
     <meta property="og:locale" content="{{ \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getCurrentLocale() }}">
+    <meta property="og:image" content="{{ request()->root() }}/images/share-en-512.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="{{ url()->current() }}" />
+    <meta name="twitter:title" content="{{ $metaTitle ?? '' }}" />
+    <meta name="twitter:description" content="{{ $metaDescription ?? '' }}" />
+    <meta name="twitter:image" content="{{ request()->root() }}/images/share-en-512.png" />
 @endif

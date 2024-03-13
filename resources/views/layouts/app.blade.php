@@ -16,9 +16,6 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="publisher" content=""/>
-    <meta name="author" content=""/>
-    <meta name="copyright" content="" />
 
     <base href="{{ url('/') }}">
 
@@ -27,20 +24,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-{{--    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">--}}
-{{--    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">--}}
-{{--    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">--}}
-{{--    <link rel="manifest" href="/site.webmanifest">--}}
-{{--    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">--}}
-{{--    <meta name="msapplication-TileColor" content="#da532c">--}}
-{{--    <meta name="theme-color" content="#ffffff">--}}
+    <link rel="icon" href="/favicon/favicon.ico">
+    <link type="image/png" sizes="16x16" rel="icon" href="/favicon/favicon-16x16.png">
+    <link type="image/png" sizes="32x32" rel="icon" href="/favicon/favicon-32x32.png">
+    <link type="image/png" sizes="192x192" rel="icon" href="/favicon/android-chrome-192x192.png">
+    <link type="image/png" sizes="512x512" rel="icon" href="/favicon/android-chrome-512x512.png">
+    <link sizes="180x180" rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
 
     <link href="{{ strtok(LaravelLocalization::getNonLocalizedURL(), '?') }}" rel="canonical">
-
-{{--    @foreach(LaravelLocalization::getSupportedLocales() as $locale => $localeData)--}}
-{{--        <link href="{{ strtok(LaravelLocalization::getLocalizedUrl($locale), '?') }}" rel="alternate" hreflang="{{ $locale }}"/>--}}
-{{--    @endforeach--}}
-{{--    <link href="{{ strtok(LaravelLocalization::getNonLocalizedURL(), '?') }}" rel="alternate" hreflang="x-default"/>--}}
 
     {{ $criticalCss ?? '' }}
 
@@ -65,6 +57,8 @@
 <!-- Scripts -->
 {{ $js ?? '' }}
 <script src="/js/common.js"></script>
+
+@include('components.modalDownload')
 
 {{ $jsBottom ?? '' }}
 </body>

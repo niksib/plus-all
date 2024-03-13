@@ -34,7 +34,7 @@
                     </nav>
                 </div>
                 <div class="footer-btns">
-                    <a href="{{ trans('links.stickers-download') }}" class="btn  btn--trsnt "><span class="btn-text">{{ trans('footer.btn-1') }}</span>
+                    <a href="{{ trans('links.stickers-download') }}" class="btn  btn--trsnt download-stickers"><span class="btn-text">{{ trans('footer.btn-1') }}</span>
                         <svg class="btn-download" width="36" height="36" viewBox="0 0 36 36" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -53,6 +53,12 @@
                     </a>
                 </div>
                 <div class="footer-copyright">
+                    <div class='footer-partner-content'>
+                        <p class="footer-partner-text">
+                            {!! trans('footer.copyright-2') !!}
+                        </p>
+                        <span class="dforce">Powered by <a class="dforce-text" href="https://dforce.com.ua/" target="_blank">DForce</a></span>
+                    </div>
                     <div class="footer-copyright-content"><p class="footer-copyright-sentences">{!! trans('footer.copyright') !!}</p></div>
                 </div>
             </div>

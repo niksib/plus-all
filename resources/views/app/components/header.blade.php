@@ -39,7 +39,7 @@
 
                         @if(request()->route() && request()->route()->getName() === 'home')
                             <div class="main-menu-btns">
-                                <a href="{{ trans('links.stickers-download') }}" class="btn   btn--blue header-btn">
+                                <a href="{{ trans('links.stickers-download') }}" class="btn   btn--blue header-btn download-stickers">
                                     <span class="btn-text">{{ trans('header.download-stickers') }}</span>
                                     <svg class="btn-download" width="36" height="36" viewBox="0 0 36 36" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">

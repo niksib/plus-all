@@ -14,7 +14,7 @@ class ViewBlockFrontRepository
             ->get();
     }
 
-    public function getActiveViewBlockByKey(string $key): ViewBlock
+    public function getActiveViewBlockByKey(string $key): ?ViewBlock
     {
         return ViewBlock::with('lang')
             ->where('key', $key)
