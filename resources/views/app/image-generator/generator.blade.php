@@ -44,7 +44,7 @@
                             <div class="input-wrap">
                                 <label class="input-label field-label">{{ trans('generator.brand-name') }}</label>
                                 <div class="input-content">
-                                    <input name="name" type="text" class="input" placeholder="Beres" required></div>
+                                    <input name="name" type="text" class="input" placeholder="{{ trans('generator.brand-name-placeholder') }}" required></div>
                             </div>
                             <div class="workshop-form-colors-block">
                                 <div class="workshop-form-colors-right"><label class="input-label field-label">{{ trans('generator.brand-color') }}</label>
