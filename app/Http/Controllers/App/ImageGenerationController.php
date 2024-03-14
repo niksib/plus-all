@@ -83,7 +83,7 @@ class ImageGenerationController extends Controller
                 'phone' => $request->phone
             ]);
 
-            response()->json([
+            return response()->json([
                 'downloadUrl' => trans('modal-download.url-for-download')
             ]);
         } catch (Exception $exception) {
