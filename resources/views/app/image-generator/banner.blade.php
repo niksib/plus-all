@@ -13,7 +13,7 @@
 <body id="">
 <div>
     <div class="generator-parent">
-        <img src="/storage/{{ $banner->image }}" width="{{ $banner->width }}" height="{{ $banner->height }}" alt="exemple">
+        <img src="/storage/{{ $banner->image }}" alt="exemple">
         <div class="generator {{ $banner->dark_theme ? 'generator--inversion' : '' }}" id="generator" style="background-color: {{ $banner->bg_color }}">
             <p class="generator-title">
                 {{ trans('generator.image-title') }}<br>
@@ -42,7 +42,7 @@
                 <img class="generator-logo-sticker" src="/svg/sticker-logo.svg" alt="Maid in Ukraine">
             </div>
             <div class="generator-product" id="generator-product">
-                <img src="/storage/{{ $banner->image }}" id="product-img">
+                <img src="/storage/{{ $banner->image }}" id="product-img" width="{{ $banner->width }}" height="{{ $banner->height }}">
             </div>
         </div>
     </div>
