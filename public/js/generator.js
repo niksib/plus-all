@@ -306,7 +306,7 @@ const formFunction = () => {
 			const newWidth = wImg * val;
 			const newHeight = hImg * val;
 
-            console.log('--------',val,wImg,hImg,newWidth,newHeight)
+            //console.log('--------',val,wImg,hImg,newWidth,newHeight)
 			const maxWidth = generatorProductWrap.offsetWidth;
 			const maxHeight = generatorProductWrap.offsetHeight;
 
@@ -368,21 +368,21 @@ const formFunction = () => {
     submitBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         const res = validatorForm();
+        const _k = 1920/764;
 
         if(!res){return null;}
 
 
 
         const _target = e.target;
-                console.log('_target',_target);
         _target.disabled = true;
         _target.classList.add('btn--load');
 
         const formData = new FormData(form, submitBtn);
 		const _img = document.getElementById('product-img');
 
-        formData.append('width', _img.offsetWidth);
-        formData.append('height', _img.offsetHeight);
+        formData.append('width', _img.offsetWidth * _k);
+        formData.append('height', _img.offsetHeight * _k);
 
 
         //let formDataObject = Object.fromEntries(formData.entries());

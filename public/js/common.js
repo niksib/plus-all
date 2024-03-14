@@ -8,6 +8,178 @@ function _onScroll(){
 	}
 }
 
+async function fetchDownloadJSON(bodyData) {
+    const response = await window.fetch('/image-generation/download',
+    {
+        method: 'POST',
+        body: bodyData,
+    }
+    );
+    const data = await response.json();
+    return data;
+  }
+
+
+
+function stickersForm(){
+	const form = document.getElementById('form-stickers');
+	const formName = form.querySelector('[name="name"]');
+	const formEmail = form.querySelector('[name="email"]');
+    const formPhone = form.querySelector('[name="phone"]');
+    const submitBtn = form.querySelector('.modal-form-block-submit');
+	const formData = new FormData(form, submitBtn);
+
+	  const phoneNumberMask = (e) => {
+
+		const _target = e.target
+
+			if(_target.classList.contains('field-error')){
+				_target.classList.remove('field-error');
+			}
+
+
+		let myMask = "38 (___) ___ __ __";
+		let myCaja = _target;
+		let myText = "38";
+		let myNumbers = [];
+		let myOutPut = ""
+		let theLastPos = 4;
+		myText = ''+myCaja.value?.length < 2 ? myMask+myCaja.value : myCaja.value;
+
+		//get numbers
+		for (let i = 2; i < myText.length; i++) {
+		  if (!isNaN(myText.charAt(i)) && myText.charAt(i) != " ") {
+			myNumbers.push(myText.charAt(i));
+		  }
+		}
+		//write over mask
+		for (let j = 0; j < myMask.length; j++) {
+		  if (myMask.charAt(j) == "_") { //replace "_" by a number
+			if (myNumbers.length == 0)
+			  myOutPut = myOutPut + myMask.charAt(j);
+			else {
+			  myOutPut = myOutPut + myNumbers.shift();
+			  theLastPos = j + 1; //set caret position
+			}
+		  } else {
+			myOutPut = myOutPut + myMask.charAt(j);
+		  }
+		}
+		myCaja.value = myOutPut;
+		myCaja.setSelectionRange(theLastPos, theLastPos);
+	  }
+
+	const rules = (key, val) => {
+		if (!val) {
+			return false;
+		}
+
+		if (key === 'email') {
+			if (!val.match(/^.+@.+\..+$/gim)) {
+				return false;
+			}
+		}
+
+		if (key === 'phone') {
+			let matches = val?.replace(/[^0-9]/g, "");
+
+			if (matches?.length !== 12) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	const validationForm = (isCheck = false) => {
+		const formData = new FormData(form, submitBtn);
+		let valid = true;
+
+		for (const _d of formData) {
+			if(!rules(_d[0],_d[1])){
+				valid = false;
+				if(isCheck){
+					form.querySelector(`[name="${_d[0]}"]`)?.classList?.add('field-error');
+				}
+			}
+		}
+
+		submitBtn.disabled = !valid;
+
+		return {valid,formData};
+	}
+
+	const inputHandler = (e) => {
+
+		const _target = e.target
+
+		if(_target.classList.contains('field-error')){
+			_target.classList.remove('field-error');
+		}
+	}
+
+	const onBlurHandler = (e) => {
+		validationForm();
+	}
+    formName.addEventListener('input', inputHandler);
+    formName.addEventListener('input', onBlurHandler);
+	formEmail.addEventListener('input', inputHandler);
+	formEmail.addEventListener('input', onBlurHandler);
+	formPhone.addEventListener('input', phoneNumberMask);
+	formPhone.addEventListener('input', onBlurHandler);
+
+	submitBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        const res = validationForm(true);
+
+        if(!res.valid){return null;}
+
+
+        const _target = e.target;
+        _target.disabled = true;
+        _target.classList.add('btn--load');
+
+
+        //let formDataObject = Object.fromEntries(formData.entries());
+        //let formDataJsonString = JSON.stringify(formDataObject);
+
+        // formData.forEach(function(value, key){
+        //     object[key] = value;
+        // });
+
+        // const json = JSON.stringify(object);
+
+
+        // for (var pair of res.formData.entries()) {
+        //     console.log(pair[0]+ ', ' + pair[1]);
+        // }
+
+
+
+        try{
+            const res = await fetchDownloadJSON(res.formData);
+
+            if(!res?.downloadUrl){
+                throw new Error('Empty image');
+            }
+			const modal = document.getElementById('modal-download');
+			if(modal){
+				modal.classList.remove('modal--open');
+			}
+            window.open(res.downloadUrl);
+
+        }catch(e){
+            window.alert('Error')
+        }finally{
+            _target.disabled = false;
+            _target.classList.remove('btn--load');
+        }
+
+    })
+
+}
+
 
 document.onreadystatechange = function () {
 	if (document.readyState === "complete") {
@@ -25,7 +197,7 @@ document.onreadystatechange = function () {
 		const allBtnsDownloads = document.querySelectorAll('.download-stickers')
 		const modalDownload = document.getElementById('modal-download');
 		const closeModalDownload = document.querySelector('.modal-close');
-		
+
 		const nextStepModalDownload = document.querySelector('#modal-download .modal-agree-block-submit');
 		const agreeModalDownload = document.querySelector('#modal-download .modal-agree-block');
 		const formModalDownload = document.querySelector('#modal-download .modal-form-block');
@@ -88,12 +260,13 @@ document.onreadystatechange = function () {
 
 		}
 
+		stickersForm();
+
 		allBtnsDownloads.forEach(function(button) {
 			button.addEventListener('click',(e)=>{
 				e.preventDefault();
 				const elem = e.target;
 				modalDownload.classList.add('modal--open');
-				console.log('----ele',elem);
 			})
 		});
 
@@ -131,6 +304,7 @@ document.onreadystatechange = function () {
 
 
 		_onScroll();
+
 
 	}
 }
