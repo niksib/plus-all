@@ -12,4 +12,9 @@ class BannerFrontRepository
     {
         return Banner::query()->orderBy('id', 'desc')->limit($limit)->get();
     }
+
+    public function getShowOnGeneratorBanners(): Collection
+    {
+        return Banner::query()->where('show_on_generator', 1)->get();
+    }
 }

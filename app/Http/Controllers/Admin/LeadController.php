@@ -22,7 +22,7 @@ class LeadController extends CRUDController
     {
         $filePath = storage_path('app/leads_export_' . time() . '.csv');
         $fp = fopen($filePath, 'w');
-        fputcsv($fp, ['ID', 'ПІБ', 'Email', 'Телефон', 'Дата']);
+        fputcsv($fp, ['ID', 'Name', 'Email', 'Phone', 'Date']);
         Lead::query()->chunk(100, function ($items) use ($fp) {
             foreach ($items as $item) {
                 $data = $item->toArray();

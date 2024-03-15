@@ -48,6 +48,7 @@ Route::middleware(['auth', 'verified', 'permissions'])
         Route::get('/translations/google-sync', [TranslationController::class, 'googleSheetSync'])->name('translations.sync');
         Route::resource('banners', BannerController::class)->except(['show', 'edit', 'store', 'create', 'update']);
         Route::get('/banners/download', [BannerController::class, 'export'])->name('banners.download');
+        Route::get('/banners/show-generator', [BannerController::class, 'showGenerator'])->name('banners.show-generator');
         Route::resource('leads', LeadController::class)->except(['show', 'edit', 'store', 'create', 'update']);
         Route::get('/leads/download', [LeadController::class, 'export'])->name('leads.download');
 

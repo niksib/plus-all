@@ -691,6 +691,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           width: "200",
           height: "200"
         }, null, 8 /* PROPS */, _hoisted_12)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
+          href: _ctx.route('admin.banners.show-generator', {
+            id: item.id,
+            show: !item.show_on_generator
+          }),
+          "class": "py-2 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-green-50 rounded-lg border border-gray-200 hover:bg-green-100 focus:z-10 focus:ring-4 focus:ring-gray-200"
+        }, {
+          "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.show_on_generator === 1 ? 'Прибрати з генератора' : 'Відобразити на генераторі'), 1 /* TEXT */)];
+          }),
+
+          _: 2 /* DYNAMIC */
+        }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
           href: _ctx.route('admin.banners.destroy', {
             banner: item.id
           }),

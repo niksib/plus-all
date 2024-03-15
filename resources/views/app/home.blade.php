@@ -221,7 +221,6 @@
                     </a>
                 @endforeach
             </div>
-            <p class="partners-text text">{{ trans('partners.description') }}</p>
         </div>
     </section>
 </x-app-layout>

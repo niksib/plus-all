@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Admin\Contracts\CRUDController;
 use App\Services\ImageGeneration\Models\Banner;
 use App\Services\ImageGeneration\Repositories\BannerRepository;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class BannerController extends CRUDController
@@ -46,5 +51,24 @@ class BannerController extends CRUDController
         return response()->download($filePath, 'banners.csv', [
             'Content-Type' => 'text/csv',
         ]);
+    }
+
+    public function showGenerator(
+        Request $request,
+        BannerRepository $bannerRepository
+    ): RedirectResponse {
+        $id = $request->get('id');
+        $show = $request->get('show');
+
+        $banner = $bannerRepository->getById($id);
+
+        if (empty($banner)) {
+            abort(404);
+        }
+
+        $banner->show_on_generator = $show;
+        $banner->save();
+
+        return redirect()->back();
     }
 }

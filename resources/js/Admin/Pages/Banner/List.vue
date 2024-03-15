@@ -64,6 +64,11 @@ const proxyFilters = ref(props.filters);
                             <img :src="'/storage/' + item.image.replace('/stickers', '')" width="200" height="200">
                         </td>
                         <td class="px-6 py-4 text-right whitespace-nowrap">
+                            <Link :href="route('admin.banners.show-generator', {id: item.id, show: !item.show_on_generator})"
+                                  class="py-2 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-green-50 rounded-lg border border-gray-200 hover:bg-green-100 focus:z-10 focus:ring-4 focus:ring-gray-200"
+                            >
+                                {{ item.show_on_generator === 1 ? 'Прибрати з генератора' : 'Відобразити на генераторі'}}
+                            </Link>
                             <Link :href="route('admin.banners.destroy', {banner: item.id})"
                                   method="delete"
                                   as="button"

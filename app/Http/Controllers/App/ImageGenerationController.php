@@ -21,7 +21,7 @@ class ImageGenerationController extends Controller
     public function generator(BannerFrontRepository $bannerFrontRepository): Factory|View|Application {
         view()->share('bodyId', 'workshop');
 
-        $banners = $bannerFrontRepository->getLatestBanners();
+        $banners = $bannerFrontRepository->getShowOnGeneratorBanners();
 
         return view('app.image-generator.generator', [
             'banners' => $banners
