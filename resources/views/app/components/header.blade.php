@@ -30,7 +30,7 @@
                     <ul class="menu">
                         @foreach($headerMenu as $key => $item)
                             <li class="menu-el {{ $key === 0 ? 'active' : '' }}">
-                                <a class="menu-el-text" href="{{ $item->lang->url }}">{{ $item->lang->title }}</a>
+                                <a class="menu-el-text" href="{{ $item->lang->url }}" {{ $item->lang->url === '/files/brandbook.pdf' ? 'target="_blank"' : '' }}>{{ $item->lang->title }}</a>
                             </li>
                         @endforeach
                     </ul>

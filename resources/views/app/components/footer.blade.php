@@ -27,7 +27,7 @@
                         <ul class="footer-menu-list">
                             @foreach($footerMenu as $key => $item)
                                 <li class="footer-menu-el">
-                                    <a class="footer-menu-text" href="{{ $item->lang->url }}">{{ $item->lang->title }}</a>
+                                    <a class="footer-menu-text" href="{{ $item->lang->url }}" {{ $item->lang->url === '/files/brandbook.pdf' ? 'target="_blank"' : '' }}>{{ $item->lang->title }}</a>
                                 </li>
                             @endforeach
                         </ul>
