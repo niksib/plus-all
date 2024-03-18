@@ -7,6 +7,7 @@
     <meta name='robots' content='noindex, nofollow' />
     <title>Generator</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/baner.css"/>
     <link rel="stylesheet" href="/css/baner-generator.css"/>
 </head>

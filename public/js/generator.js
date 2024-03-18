@@ -368,7 +368,7 @@ const formFunction = () => {
     submitBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         const res = validatorForm();
-        const _k = 1920/764;
+        const _k = 1920/generatorProduct.offsetWidth;
 
         if(!res){return null;}
 
@@ -394,7 +394,6 @@ const formFunction = () => {
 
         // const json = JSON.stringify(object);
 
-        
         // for (var pair of formData.entries()) {
         //     console.log(pair[0]+ ', ' + pair[1]); 
         // }
