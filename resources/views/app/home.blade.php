@@ -148,7 +148,7 @@
         <div class="container">
             <div class="our-design-title-wrap">
                 <h2 class="our-design-title">{{ trans('our-design.title') }}</h2>
-                <p class="our-design-subtitle text">{{ trans('our-design.description') }}</p>
+                <p class="our-design-subtitle text">{!! trans('our-design.description') !!}</p>
             </div>
         </div>
         <div class="container our-design-container">
