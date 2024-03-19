@@ -16,8 +16,9 @@
     <section class="first-section" id="home">
         <div class="container">
             <div class="first-body">
-                <div class="first-content"><h1 class="first-title">{{ trans('first-section.title') }}</h1>
-                    <p class="first-text">{{ trans('first-section.subtitle') }}</p></div>
+                <div class="first-content">
+                    <h1 class="first-title">{{ trans('first-section.title') }}</h1>
+                    <p class="first-text">{!! trans('first-section.subtitle') !!}</p></div>
                 <picture class="first-bg-img-wrap">
                     <source media="(max-width: 1199px)" srcset="/images/main-mob.png">
                     <source media="(min-width: 1200px)" srcset="/images/main.png">
