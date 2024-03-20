@@ -139,8 +139,8 @@
                                     </button>
                                     <span class="workshop-share-text">{{ trans('generator.share') }}</span></div>
                                 <div class="workshop-share-btns share-btn"
-                                     data-url="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template"
-                                     data-title="testTitle" data-desc="testDescription"><a
+                                     data-url="{{ trans('generator.share-url') }}"
+                                     data-title="{{ trans('generator.share-title') }}" data-desc="{{ trans('generator.share-description') }}"><a
                                         class="share-button btn-facebook" data-id="fb">
                                         <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
