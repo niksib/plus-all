@@ -33,7 +33,7 @@ class ImageGenerationController extends Controller
     ): JsonResponse {
         try {
             $imageGenerationService = new ImageGenerationService();
-            dd($request->file('image')->getClientMimeType());
+            dd($request->file('image')->getClientMimeType(), $request->file('image')->getMimeType());
             $data = [
                 'name' => $request->get('name'),
                 'bg_color' => $request->get('bg-color'),
