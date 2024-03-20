@@ -404,7 +404,9 @@ const formFunction = () => {
             if(!res?.url){
                 throw new Error('Empty image');
             }
-            window.open(res.url);
+            setTimeout(function(){
+                window.open(res.url);
+            });
             
         }catch(e){
             window.alert('Error')
