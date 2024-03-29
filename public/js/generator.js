@@ -171,7 +171,7 @@ const formFunction = () => {
     const formProductName = document.querySelector('.workshop-form [name="product-name"]');
     const formImg = document.querySelector('.workshop-form [name="image"]');
     const formBgColor = document.querySelector('.workshop-form [name="bg-color"]');
-    const formBoderColor = document.querySelector('.workshop-form [name="border-color"]');
+    //const formBoderColor = document.querySelector('.workshop-form [name="border-color"]');
 	const formCheckDark = document.querySelector('.workshop-form [name="dark-theme"]');
 	const formMultiplier = document.querySelector('.workshop-form [name="multiplier"]');
     const textInfo = document.querySelector('.workshop-form-text--check');
@@ -180,6 +180,9 @@ const formFunction = () => {
 	
     const formEmail = document.querySelector('.workshop-form [name="email"]');
     const formPhone = document.querySelector('.workshop-form [name="phone"]');
+    const formCompany = document.querySelector('.workshop-form [name="company"]');
+    const formEdrpoy = document.querySelector('.workshop-form [name="edrpoy"]');
+
     const submitBtn = document.querySelector('.workshop-form-submit');
 
 
@@ -363,6 +366,12 @@ const formFunction = () => {
 
     formPhone.addEventListener('blur', onBlurHandler);
     formPhone.addEventListener('input', phone_number_mask);
+
+    formCompany.addEventListener('input', textHandler);
+    formCompany.addEventListener('blur', onBlurHandler);
+
+    formEdrpoy.addEventListener('input', textHandler);
+    formEdrpoy.addEventListener('blur', onBlurHandler);
     
 
     submitBtn.addEventListener('click', async (e) => {

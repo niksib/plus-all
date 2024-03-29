@@ -10,7 +10,7 @@
             </div>
             <form class="modal-form-block" id="form-stickers"><span class="modal-title">{{ trans('modal-download.btn-info') }}</span>
                 @csrf
-                <div class="modal-form-block-row">
+                <div class="modal-form-block-row modal-form-block-column-3">
                     <div class="input-wrap"><label class="input-label field-label">{{ trans('modal-download.input-pib') }}</label>
                         <div class="input-content"><input name="name" type="text" class="input" placeholder="{{ trans('modal-download.input-pib-placeholder') }}" required></div>
                     </div>
@@ -21,6 +21,16 @@
                     <div class="input-wrap   "><label class="input-label field-label">{{ trans('modal-download.input-phone') }}</label>
                         <div class="input-content"><input name="phone" type="text" class="input"
                                                           placeholder="{{ trans('modal-download.input-phone-placeholder') }}" required></div>
+                    </div>
+                </div>
+                <div class="modal-form-block-row modal-form-block-column-2">
+                    <div class="input-wrap   "><label class="input-label field-label">{{ trans('modal-download.input-company') }}</label>
+                        <div class="input-content"><input name="company" type="text" class="input"
+                                                          placeholder="{{ trans('modal-download.input-company-placeholder') }}" required></div>
+                    </div>
+                    <div class="input-wrap   "><label class="input-label field-label">{{ trans('modal-download.input-company-edrpoy') }}</label>
+                        <div class="input-content"><input name="edrpoy" type="text" class="input"
+                                                          placeholder="{{ trans('modal-download.input-company-edrpoy-placeholder') }}" required></div>
                     </div>
                 </div>
                 <div class="modal-form-block-submit-wrap">

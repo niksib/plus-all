@@ -26,6 +26,9 @@ function stickersForm(){
 	const formName = form.querySelector('[name="name"]');
 	const formEmail = form.querySelector('[name="email"]');
     const formPhone = form.querySelector('[name="phone"]');
+	const formCompany = form.querySelector('[name="company"]');
+    const formEdrpoy = form.querySelector('[name="edrpoy"]');
+
     const submitBtn = form.querySelector('.modal-form-block-submit');
 	const formData = new FormData(form, submitBtn);
 	
@@ -123,10 +126,18 @@ function stickersForm(){
 	}
     formName.addEventListener('input', inputHandler);
     formName.addEventListener('input', onBlurHandler);
+
 	formEmail.addEventListener('input', inputHandler);
 	formEmail.addEventListener('input', onBlurHandler);
+
 	formPhone.addEventListener('input', phoneNumberMask);
 	formPhone.addEventListener('input', onBlurHandler);
+	
+    formCompany.addEventListener('input', inputHandler);
+    formCompany.addEventListener('blur', onBlurHandler);
+
+    formEdrpoy.addEventListener('input', inputHandler);
+    formEdrpoy.addEventListener('blur', onBlurHandler);
 
 	submitBtn.addEventListener('click', async (e) => {
         e.preventDefault();
@@ -154,7 +165,6 @@ function stickersForm(){
         // for (var pair of result.formData.entries()) {
         //     console.log(pair[0]+ ', ' + pair[1]); 
         // }
-
 
 
         try{

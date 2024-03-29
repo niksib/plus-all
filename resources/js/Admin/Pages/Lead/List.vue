@@ -32,6 +32,12 @@ const props = defineProps({
                         <th scope="col" class="px-6 py-3">
                             Телефон
                         </th>
+                        <th scope="col" class="px-6 py-3">
+                            Компанія
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            ЄДРПОУ
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -47,6 +53,12 @@ const props = defineProps({
                         </th>
                         <td class="px-6 py-4 text-gray-500">
                             {{ item.phone }}
+                        </td>
+                        <td class="px-6 py-4 text-gray-500">
+                            {{ item.company }}
+                        </td>
+                        <td class="px-6 py-4 text-gray-500">
+                            {{ item.edrpoy }}
                         </td>
                         <td class="px-6 py-4 text-right whitespace-nowrap">
                             <Link :href="route('admin.leads.destroy', {lead: item.id})"

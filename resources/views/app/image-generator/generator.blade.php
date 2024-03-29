@@ -101,6 +101,16 @@
                                     <input name="phone" type="text" class="input" placeholder="38 (093) 000 00 00" required></div>
                             </div>
                         </div>
+                        <div class="workshop-form-row workshop-form-row-3">
+                            <div class="input-wrap   "><label class="input-label field-label">{{ trans('modal-download.input-company') }}</label>
+                                <div class="input-content"><input name="company" type="text" class="input"
+                                                                  placeholder="{{ trans('modal-download.input-company-placeholder') }}" required></div>
+                            </div>
+                            <div class="input-wrap   "><label class="input-label field-label">{{ trans('modal-download.input-company-edrpoy') }}</label>
+                                <div class="input-content"><input name="edrpoy" type="text" class="input"
+                                                                  placeholder="{{ trans('modal-download.input-company-edrpoy-placeholder') }}" required></div>
+                            </div>
+                        </div>
                         <div class="workshop-form-last">
                             <p class="workshop-form-text workshop-form-text--check">
                                 <span class="workshop-form-text-wating">{{ trans('generator.photo-message') }}</span>

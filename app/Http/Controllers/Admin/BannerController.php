@@ -27,7 +27,7 @@ class BannerController extends CRUDController
     {
         $filePath = storage_path('app/banners_export_' . time() . '.csv');
         $fp = fopen($filePath, 'w');
-        fputcsv($fp, ['ID', 'Назва', 'Банер', 'Email', 'Телефон', 'Дата', 'Продукт']);
+        fputcsv($fp, ['ID', 'Name', 'Banner', 'Email', 'Phone', 'Date', 'Product', 'Company', 'Edrpoy']);
         Banner::query()->chunk(100, function ($items) use ($fp) {
             foreach ($items as $item) {
                 $data = $item->toArray();
@@ -38,7 +38,8 @@ class BannerController extends CRUDController
                     $data['height'],
                     $data['bg_color'],
                     $data['border_color'],
-                    $data['updated_at']
+                    $data['updated_at'],
+                    $data['show_on_generator']
                 );
                 $data['image'] = url()->to('storage/' . $item->getBannerPath());
 

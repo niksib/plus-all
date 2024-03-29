@@ -10,7 +10,7 @@ class Banner extends Model
 
     protected $fillable = [
         'name', 'multiplier', 'bg_color', 'dark_theme', 'image',
-        'width', 'height', 'phone', 'email', 'company'
+        'width', 'height', 'phone', 'email', 'company', 'edrpoy', 'company_rep'
     ];
 
     public function getBannerPath(): string

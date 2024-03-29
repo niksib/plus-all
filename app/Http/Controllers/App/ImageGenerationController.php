@@ -44,7 +44,9 @@ class ImageGenerationController extends Controller
                 'height' => $request->get('height'),
                 'phone' => $request->get('phone'),
                 'email' => $request->get('email'),
-                'company' => $request->get('product-name')
+                'company' => $request->get('product-name'),
+                'edrpoy' => $request->get('edrpoy'),
+                'company_rep' => $request->get('company')
             ];
             $url = $imageGenerationService->generate($data);
 
@@ -81,7 +83,9 @@ class ImageGenerationController extends Controller
             $leadRepository->create([
                 'name' => $request->name,
                 'email' => $request->email,
-                'phone' => $request->phone
+                'phone' => $request->phone,
+                'company' => $request->company,
+                'edrpoy' => $request->edrpoy
             ]);
 
             return response()->json([

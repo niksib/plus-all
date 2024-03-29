@@ -34,6 +34,8 @@ class LeadDowloadRequest extends FormRequest
             'name' => 'required|max:30',
             'email' => 'required|email|max:30',
             'phone' => 'required|max:30',
+            'company' => 'required|max:50',
+            'edrpoy' => 'required|max:50',
         ];
     }
 }
