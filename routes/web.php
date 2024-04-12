@@ -5,7 +5,7 @@ use App\Http\Controllers\App\ImageGenerationController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localizationRedirect', 'cache.headers:public;max_age=86400;etag']], function() {
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localizationRedirect', 'cache.headers:public;max_age=7190;etag']], function() {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/image-generator', [ImageGenerationController::class, 'generator'])->name('image-generation.generator');
     Route::post('/image-generation/generate', [ImageGenerationController::class, 'generate'])->name('image-generation.generate');
