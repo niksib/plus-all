@@ -31,11 +31,11 @@ class LeadDowloadRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:30',
-            'email' => 'required|email|max:30',
-            'phone' => 'required|max:30',
-            'company' => 'required|max:50',
-            'edrpoy' => 'required|max:50',
+            'name' => 'required|max:200',
+            'email' => 'required|email|max:200',
+            'phone' => 'required|max:200',
+            'company' => 'required|max:200',
+            'edrpoy' => 'required|max:200',
         ];
     }
 }
